@@ -27,7 +27,7 @@ public class StarterApplication extends Application {
     Parse.enableLocalDatastore(this);
 
     // Add your initialization code here
-    Parse.initialize(this, Resources.getSystem().getString(R.string.parse_app_id), Resources.getSystem().getString(R.string.parse_client_key));
+    Parse.initialize(this, getResources().getString(R.string.parse_app_id), getResources().getString(R.string.parse_client_key));
     ParseFacebookUtils.initialize(this);
 
     ParseUser.enableAutomaticUser();
