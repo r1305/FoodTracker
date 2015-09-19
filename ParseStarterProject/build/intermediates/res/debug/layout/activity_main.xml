@@ -25,5 +25,53 @@
         android:id="@+id/FbLoginBtn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/login_email"
+        android:hint="E-Mail"
+        android:layout_above="@+id/login_password"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/login_password"
+        android:hint="Contraseña"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/FbLoginBtn"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout"
+        android:layout_marginBottom="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingresar"
+            android:id="@+id/button"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:id="@+id/button2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+    </LinearLayout>
 </RelativeLayout>
-<!-- From: file:/C:/Users/gonzalo/AndroidStudioProjects/ParseFBLogin/ParseStarterProject/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/foodTrucker/ParseStarterProject/src/main/res/layout/activity_main.xml -->
