@@ -28,6 +28,7 @@ public class StarterApplication extends Application {
 
     // Add your initialization code here
     Parse.initialize(this, getResources().getString(R.string.parse_app_id), getResources().getString(R.string.parse_client_key));
+
     ParseFacebookUtils.initialize(this);
 
     ParseUser.enableAutomaticUser();
