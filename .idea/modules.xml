@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ParseStarterProject/ParseStarterProject.iml" filepath="$PROJECT_DIR$/ParseStarterProject/ParseStarterProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParseStarterProject/FoodTruck.iml" filepath="$PROJECT_DIR$/ParseStarterProject/FoodTruck.iml" />
       <module fileurl="file://$PROJECT_DIR$/foodTrucker.iml" filepath="$PROJECT_DIR$/foodTrucker.iml" />
     </modules>
   </component>

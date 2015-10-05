@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Rogger\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.10.1\a87cb993a12e574a216213d0b8b2b78f6da35d37\parse-android-1.10.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a87cb993a12e574a216213d0b8b2b78f6da35d37">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\parse-android-1.10.1-968e9cb70a0cb64f8846435ce1eb9971f05f12c6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-0af9fc8ac4c7522877aa708f7cdbd5f6f4fbc635.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-851c9489772e498941f1ad51caa9d96912bbeda5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-3344658bf66805b3ccbc72f0e19b4eb63acd2e5c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="15ad6a46fb8e2ed86556e0b330d738b589dc62c7">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-ca35c4156f7017c7ebd352c7035b7cd50179633a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-960a0c1afe37788b0ab324844cfc84549c268eab.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-1ef2052af28a13b55df063e293ea27a66ebda459.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseFacebookUtilsV4-1.10.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="81f498fa332ac7dff56ccbbef03e3d9f96ff67c8">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\ParseFacebookUtilsV4-1.10.1-fa11ced4e0e71a017b9c687c8560d0b5663c4101.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\butterknife-7.0.1-46455898aa91030f6b0596a7835f7ea8ffa7cda2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.1\44780c2cf98f6a3cf4e77f1234d644758b329201\bolts-android-1.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\bolts-android-1.2.1-1e0342ec9b4266f298cbff5da97b6c0cf5bd1303.jar" />
+    </item>
+
+</items>
