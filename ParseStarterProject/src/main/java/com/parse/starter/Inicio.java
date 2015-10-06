@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -53,9 +54,12 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         ButterKnife.bind(this);
         toolbar.setTitle("Menu");
 
+
         toolbar.setNavigationIcon(R.drawable.menu);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,23 +88,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         nav.setNavigationItemSelectedListener(this);
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-
-            image.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-        }
-    }
-
 
 
 

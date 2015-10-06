@@ -458,7 +458,6 @@ available. Please contact the developer for assistance.</string>
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
 
-
     </style>
     <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>

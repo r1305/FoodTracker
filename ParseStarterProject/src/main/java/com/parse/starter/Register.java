@@ -2,6 +2,9 @@ package com.parse.starter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,14 +13,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
+import Utilities.BitmapToByteArray;
+import Utilities.DownloadImageTask;
+import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -30,6 +45,8 @@ public class Register extends AppCompatActivity {
     @Bind(R.id.emailTxt)EditText email;
     @Bind(R.id.passwordTxt)EditText psw;
     @Bind(R.id.sexGroup)RadioGroup sex;
+    @Bind(R.id.profile_image) ImageView profile_image;
+    private static final int PICK_IMAGE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,46 +54,74 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
+        Bitmap bitmap = ((BitmapDrawable) profile_image.getDrawable()).getBitmap();
+        new BitmapToByteArray().execute(bitmap);
+        if (Utils.user.isFacebook()) {
+            getFbData();
+        }
+        profile_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
 
 
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseUser user = new ParseUser();
-                user.setUsername(email.getText().toString());
-                user.setPassword(psw.getText().toString());
-                user.setEmail(email.getText().toString());
-                user.put("name",name.getText().toString());
-
-                switch (sex.getCheckedRadioButtonId()){
-                    case R.id.masculino:
-                        user.put("sexo","masculino");
-                        break;
-                    case R.id.femenino:
-                        user.put("sexo","femenino");
-                        break;
-                }
-
-                user.signUpInBackground(new SignUpCallback() {
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            Intent intent = new Intent(Register.this, Inicio.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Log.i("Algo esta mal",e.getMessage());
-                            Context context = getApplicationContext();
-                            CharSequence text = "Algo salio mal!!";
-                            int duration = Toast.LENGTH_SHORT;
-
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
+                    String pass = psw.getText().toString();
+                    if (Utils.parseUser == null) {
+                            Utils.parseUser = new ParseUser();
                         }
-                    }
-                });
+                        Utils.parseUser.setUsername(email.getText().toString());
+                        Utils.parseUser.setEmail(email.getText().toString());
+                        Utils.parseUser.setPassword(pass);
+                        Utils.parseUser.put("name", name.getText().toString());
+                        switch (sex.getCheckedRadioButtonId()){
+                            case R.id.masculino:
+                                Utils.parseUser.put("sex", "masculino");
+                                break;
+                            case R.id.femenino:
+                                Utils.parseUser.put("sex", "femenino");
+                                break;
+                        }
+                        final ParseFile foto = new ParseFile("foto.png", Utils.imageBuffer);
+                        foto.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                Utils.parseUser.put("foto", foto);
+                                if (Utils.user.isFacebook()) {
+                                    Utils.parseUser.saveInBackground(new SaveCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            Intent intent = new Intent(Register.this, Inicio.class);
+                                            startActivity(intent);
+                                            Register.this.finish();
+                                            Utils.parseUser = null;
+                                        }
+                                    });
+                                } else {
+                                    Utils.parseUser.signUpInBackground(new SignUpCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            Intent intent = new Intent(Register.this, Inicio.class);
+                                            startActivity(intent);
+                                            Register.this.finish();
+                                            Utils.parseUser = null;
+                                        }
+                                    });
+                                }
 
-            }
-        });
+                            }
+                        });
+
+
+
+
+                }
+            });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,25 +132,72 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_register, menu);
-        return true;
+    private void getFbData() {
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+                        Log.d("FbUserData", object.toString());
+                        try {
+                            Utils.user.setFbid(object.getString("id"));
+                            Utils.user.setNombre(object.getString("name"));
+                            Utils.user.setEmail(object.getString("email"));
+                            Utils.user.setSexo(object.getString("gender"));
+                            Utils.user.setUrlFoto("https://graph.facebook.com/" + Utils.user.getFbid() + "/picture?height=400&width=400");
+
+                            name.setText(Utils.user.getNombre());
+                            email.setText(Utils.user.getEmail());
+                            switch (Utils.user.getSexo()) {
+                                case "male":
+                                    sex.check(R.id.masculino);
+                                    break;
+                                case "female":
+                                    sex.check(R.id.femenino);
+                                    break;
+                            }
+                            new DownloadImageTask(profile_image,true).execute(Utils.user.getUrlFoto());
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,link,email,gender");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
+
+    private void openGallery() {
+        Intent gallery =
+                new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (Utils.parseUser != null) {
+            Utils.parseUser.deleteInBackground();
+            Utils.parseUser = null;
         }
 
-        return super.onOptionsItemSelected(item);
     }
-}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+            Uri imageUri = data.getData();
+            profile_image.setImageURI(imageUri);
+            Bitmap bitmap = ((BitmapDrawable) profile_image.getDrawable()).getBitmap();
+            new BitmapToByteArray().execute(bitmap);
+        }
+    }
+
+    }
