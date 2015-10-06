@@ -11,20 +11,9 @@
     <string name="title_activity_fblogin_result">FBLoginResult</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_inicio">Inicio</string>
-    <string name="title_activity_navigation_drawer_fragment">NavigationDrawerFragment</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_example">Example action</string>
-
-    <string-array name="navigation_drawer_items_array">
-        <item>Create</item>
-        <item>Read</item>
-        <item>Help</item>
-    </string-array>
 </resources>
