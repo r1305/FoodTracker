@@ -2,43 +2,21 @@ package com.parse.starter;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.GetDataCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.text.ParseException;
-import java.util.LinkedList;
-import java.util.List;
 
 import Utilities.Utils;
 import butterknife.Bind;
@@ -54,7 +32,9 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     @Bind(R.id.navigation)
     NavigationView nav;
     @Bind(R.id.profile_image)
-    CircleImageView image;
+    CircleImageView img;
+    @Bind(R.id.txt_nav)
+    TextView txt_nav;
 
 
 
@@ -71,15 +51,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        ParseUser.getCurrentUser().getParseFile("foto").getDataInBackground(new GetDataCallback() {
-//            @Override
-//            public void done(byte[] data, com.parse.ParseException e) {
-//
-//                Utils.bit = BitmapFactory.decodeByteArray(data, 0, data.length);
-//            }
-//        });
-
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,10 +58,34 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
             }
         });
-        image.setImageBitmap(Utils.bit);
+        ParseUser currentUser = ParseUser.getCurrentUser();
 
 
-        Fragment frag1 = ThirdFragment.newInstance();
+        if (currentUser != null) {
+            txt_nav.setText(currentUser.getString("name"));
+
+            ParseFile applicantResume = (ParseFile)currentUser.get("foto");
+            applicantResume.getDataInBackground(new GetDataCallback() {
+                public void done(byte[] data, ParseException e) {
+                    if (e == null) {
+
+                        img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+
+                    } else {
+                        // something went wrong
+                    }
+                }
+            });
+
+
+
+        } else {
+            // show the signup or login screen
+
+        }
+
+
+        Fragment frag1 = ListTruckersFragment.newInstance();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
 
         ft.replace(R.id.flaContenido, frag1);
@@ -110,10 +105,10 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
         switch(menuItem.getItemId()){
             case R.id.perfil:
-                Fragment firstFragment =
-                        FirstFragment.newInstance();
+                Fragment perfil =
+                        PerfilFragment.newInstance();
 
-                ft.replace(R.id.flaContenido, firstFragment);
+                ft.replace(R.id.flaContenido, perfil);
 
                 ft.commit();
                 dl.closeDrawers();
@@ -128,10 +123,10 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 return true;
             case R.id.trucker:
 
-                Fragment thirdFragment =
-                        ThirdFragment.newInstance();
+                Fragment listado =
+                        ListTruckersFragment.newInstance();
 
-                ft.replace(R.id.flaContenido, thirdFragment);
+                ft.replace(R.id.flaContenido, listado);
                 ft.commit();
                 dl.closeDrawers();
                 return true;

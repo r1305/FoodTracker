@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 public class Listado extends Fragment{
 
 //    public static Listado newInstance(){
-//        return new FirstFragment();
+//        return new ListTruckersFragment();
 //    }
 //
 //    public Listado() {

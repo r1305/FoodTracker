@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                   public void done(ParseUser user, ParseException e) {
                       if (user != null) {
                           Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
-                          Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                          Intent intent = new Intent(MainActivity.this, Inicio.class);
                           startActivity(intent);
 
                       } else {
