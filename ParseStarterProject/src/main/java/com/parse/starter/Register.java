@@ -165,11 +165,8 @@ public class Register extends AppCompatActivity {
                                 }
                             });
                         }
-
                     }
                 });
-
-
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
