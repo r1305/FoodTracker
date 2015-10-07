@@ -33,6 +33,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.List;
 
+import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -45,103 +46,79 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.login)Button log;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-    ButterKnife.bind(this);
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+      ButterKnife.bind(this);
 
-    registrar.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(MainActivity.this, Register.class);
-            startActivity(intent);
+      registrar.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              Intent intent = new Intent(MainActivity.this, Register.class);
+              startActivity(intent);
 
-        }
-    });
+          }
+      });
       log.setOnClickListener(new View.OnClickListener() {
+
           @Override
           public void onClick(View v) {
-              ParseQuery<ParseUser> query = ParseUser.getQuery();
-              query.whereEqualTo("email", email.getText().toString());
-              Log.d(email.getText().toString(),"email");
-              query.findInBackground(new FindCallback<ParseUser>() {
-                  public void done(List<ParseUser> u, ParseException e) {
-                      if (e == null) {
 
-                          ParseUser.logInInBackground(u.get(0).getString("username"), psw.getText().toString(), new LogInCallback() {
-                              public void done(ParseUser user, ParseException e) {
-                                  if (user.getEmail().equals(email.getText().toString())) {
-                                      Log.d(email.getText().toString(), "email1");
-                                      Intent i = new Intent(MainActivity.this, Inicio.class);
-                                      startActivity(i);
-                                      finish();
-
-                                  } else {
-                                      Context context = getApplicationContext();
-                                      CharSequence text = "Usuario o contraseña inválido!";
-                                      int duration = Toast.LENGTH_SHORT;
-
-                                      Toast toast = Toast.makeText(context, text, duration);
-                                      toast.show();
-                                  }
-                              }
-                          });
+              String username = email.getText().toString().toLowerCase();
+              String pass = psw.getText().toString();
+              ParseUser.logInInBackground(username, pass, new LogInCallback() {
+                  public void done(ParseUser user, ParseException e) {
+                      if (user != null) {
+                          Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
+                          Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                          startActivity(intent);
 
                       } else {
-                          Context context = getApplicationContext();
-                          CharSequence text = "Algo salio mal!!";
-                          int duration = Toast.LENGTH_SHORT;
-
-                          Toast toast = Toast.makeText(context, text, duration);
-                          toast.show();
+                          // Signup failed. Look at the ParseException to see what happened.
+                          Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                       }
+
                   }
               });
 
           }
+
       });
 
-    ParseAnalytics.trackAppOpenedInBackground(getIntent());
-    FbLoginBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+      ParseAnalytics.trackAppOpenedInBackground(getIntent());
+      FbLoginBtn.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
 
-            List<String> permissions = Arrays.asList("public_profile", "email");
-            ParseFacebookUtils.logInWithReadPermissionsInBackground(MainActivity.this, permissions, new LogInCallback() {
-                @Override
-                public void done(ParseUser user, ParseException err) {
-                    if (err == null) {
+              List<String> permissions = Arrays.asList("public_profile", "email");
+              ParseFacebookUtils.logInWithReadPermissionsInBackground(MainActivity.this, permissions, new LogInCallback() {
+                  @Override
+                  public void done(ParseUser user, ParseException err) {
+                      if (err == null) {
 
-                        Intent intent = new Intent(MainActivity.this, Inicio.class);
-                        startActivity(intent);
+                          if (user == null) {
+                              Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
 
-                        if (user == null) {
-                            Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
-                        } else if (user.isNew()) {
-                            Log.d("MyApp", "User signed up and logged in through Facebook!");
+                          } else if (user.isNew()) {
+                              Log.d("MyApp", "User signed up and logged in through Facebook!");
+                              Intent intent = new Intent(MainActivity.this, Register.class);
+                              startActivity(intent);
+                              Utils.user.setFacebook(true);
 
-                      /*
-                      user.put("nombre", "Nombre de Mi usuario");
-                      user.saveInBackground(new SaveCallback() {
-                          @Override
-                          public void done(ParseException e) {
-
+                          } else {
+                              Log.d("MyApp", "User logged in through Facebook!");
+                              Intent intent = new Intent(MainActivity.this, Inicio.class);
+                              startActivity(intent);
+                              Utils.user.setFacebook(true);
                           }
-                      });
-                      */
-                        } else {
-                            Log.d("MyApp", "User logged in through Facebook!");
-                        }
-                    } else {
-                        Log.e("ErrorFB", err.getMessage().toString());
-                    }
+                      } else {
+                          Log.e("ErrorFB", err.getMessage().toString());
+                      }
 
 
-                }
-            });
-        }
-    });
-
-
+                  }
+              });
+          }
+      });
   }
 
     @Override

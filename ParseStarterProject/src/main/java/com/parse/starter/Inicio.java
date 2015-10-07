@@ -22,12 +22,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.LinkedList;
+import java.util.List;
 
 import Utilities.Utils;
 import butterknife.Bind;
@@ -44,7 +55,10 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     NavigationView nav;
     @Bind(R.id.profile_image)
     CircleImageView image;
-    private static int RESULT_LOAD_IMAGE = 1;
+
+
+
+
 
 
     @Override
@@ -53,23 +67,17 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         setContentView(R.layout.activity_inicio);
         ButterKnife.bind(this);
         toolbar.setTitle("Menu");
-
-
         toolbar.setNavigationIcon(R.drawable.menu);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-            }
-        });
-
+//        ParseUser.getCurrentUser().getParseFile("foto").getDataInBackground(new GetDataCallback() {
+//            @Override
+//            public void done(byte[] data, com.parse.ParseException e) {
+//
+//                Utils.bit = BitmapFactory.decodeByteArray(data, 0, data.length);
+//            }
+//        });
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -79,15 +87,19 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
             }
         });
+        image.setImageBitmap(Utils.bit);
+
 
         Fragment frag1 = ThirdFragment.newInstance();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
+
         ft.replace(R.id.flaContenido, frag1);
         ft.commit();
 
         nav.setNavigationItemSelectedListener(this);
 
     }
+
 
 
 
