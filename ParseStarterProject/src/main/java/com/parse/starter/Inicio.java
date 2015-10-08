@@ -9,15 +9,24 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import Utilities.DownloadImageTask;
 import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,10 +44,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     CircleImageView img;
     @Bind(R.id.txt_nav)
     TextView txt_nav;
-
-
-
-
 
 
     @Override
@@ -60,7 +65,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         });
         ParseUser currentUser = ParseUser.getCurrentUser();
 
-
         if (currentUser != null) {
             txt_nav.setText(currentUser.getString("name"));
 
@@ -73,6 +77,9 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
                     } else {
                         // something went wrong
+
+                        Toast t= Toast.makeText(Inicio.this,e.toString(),Toast.LENGTH_LONG);
+                        t.show();
                     }
                 }
             });

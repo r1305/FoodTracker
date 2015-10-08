@@ -2,74 +2,221 @@
 <items version="2" >
 
     <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="15ad6a46fb8e2ed86556e0b330d738b589dc62c7">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-18e6404609ebd07e059c3991135ed0df0ecc8911.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-1cef7b37c53846bac614c2ef92073bfb1410326a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5ea948d825957be6c4358c48422bee60eef2d487">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-79d31f5d25bc2de05641a33f6992593153ecba49.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6046e5cdaf799120b7c56a5a061d80e8854c4d34">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-0006524471434c9e6601669601789f51edbe89e7.jar" />
+    </item>
+    <item
         jar="C:\Users\Rogger\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.10.1\a87cb993a12e574a216213d0b8b2b78f6da35d37\parse-android-1.10.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="a87cb993a12e574a216213d0b8b2b78f6da35d37">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\parse-android-1.10.1-968e9cb70a0cb64f8846435ce1eb9971f05f12c6.jar" />
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\parse-android-1.10.1-968e9cb70a0cb64f8846435ce1eb9971f05f12c6.jar" />
     </item>
     <item
-        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0180d031a7b54dabb93b4af3869468b55dc938bd">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-7d46f5f2f564fc023879bcc8d31d4f6d127361cd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-0af9fc8ac4c7522877aa708f7cdbd5f6f4fbc635.jar" />
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-246d01745f0ddd98735ec0f4d6b329f8a4e2784e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e5b9f5b0aa8dee788beb63d23832cb29ce771343">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-fb604a272c1e2d06f5efefffe6d6f6a535a9e238.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-c08cd10cbabfd7cc68b37f522dab51761e2de409.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-34ce5da5d5910bb8e6feb0beaa529a235d64c5d9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-6068da8994560cdd611f732f54bbe1fe6a4e585d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b48d5c51a9a9e329005106b4667f54948de4d4d8">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-0c50dfe5649ab46531bfd9f6f6415119157ac311.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0708ef60917bf94913fe9ef972a655b99462dca7">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-5cbe81837fc7fb6497ee710c39d55ed713c8933a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b2c07cdb814fe988ad05f7b4d767a841514a5991">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-d2f8d56ac24323363cd8eb2eb405945df54cfe87.jar" />
     </item>
     <item
         jar="C:\Users\Rogger\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-851c9489772e498941f1ad51caa9d96912bbeda5.jar" />
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-851c9489772e498941f1ad51caa9d96912bbeda5.jar" />
     </item>
     <item
-        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.3.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-3344658bf66805b3ccbc72f0e19b4eb63acd2e5c.jar" />
+        sha1="3b4ff5c39dace8f3b4ab4cab8191785547a0815f">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-0248eca493cee41696c3adc526828ddc5aaa5876.jar" />
     </item>
     <item
-        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.5.0\jars\classes.jar"
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.3.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="15ad6a46fb8e2ed86556e0b330d738b589dc62c7">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-ca35c4156f7017c7ebd352c7035b7cd50179633a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-960a0c1afe37788b0ab324844cfc84549c268eab.jar" />
-    </item>
-    <item
-        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-1ef2052af28a13b55df063e293ea27a66ebda459.jar" />
-    </item>
-    <item
-        jar="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseFacebookUtilsV4-1.10.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="81f498fa332ac7dff56ccbbef03e3d9f96ff67c8">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\ParseFacebookUtilsV4-1.10.1-fa11ced4e0e71a017b9c687c8560d0b5663c4101.jar" />
-    </item>
-    <item
-        jar="C:\Users\Rogger\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\butterknife-7.0.1-46455898aa91030f6b0596a7835f7ea8ffa7cda2.jar" />
+        sha1="bb36004beb02b69562cbec9aa7d6a3cf16bf5d1b">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-9321313c6c2dacb91bf3f08bbc92cba1c43eabce.jar" />
     </item>
     <item
         jar="C:\Users\Rogger\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.1\44780c2cf98f6a3cf4e77f1234d644758b329201\bolts-android-1.2.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
-        <dex dex="C:\Users\Rogger\Documents\StudioProjects\foodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\bolts-android-1.2.1-1e0342ec9b4266f298cbff5da97b6c0cf5bd1303.jar" />
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\bolts-android-1.2.1-1e0342ec9b4266f298cbff5da97b6c0cf5bd1303.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e35fae1b377c23aa5fd2d309a190c2d0f73d54ec">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-dba6932e5dc45be6dae3657bf2a7ac423ca8c8a6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="59652857a825fff0de62166fca1bc9553cc01abb">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-7d1ee06e00c75192aa4f284185ad3f78e301331b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-b7bd58fd881041084ab2c4d14739cd42072c1da9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4f4fe3c23776540625f3c2844152a7510fddf9f1">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-7cc4ec9179110ece3c554a3b96979137c7e78d19.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseFacebookUtilsV4-1.10.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="81f498fa332ac7dff56ccbbef03e3d9f96ff67c8">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\ParseFacebookUtilsV4-1.10.1-e22be122929c217fc367fefd3e960d6a649b3e76.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a0ce76dfaccbfbd6c551ed2174280aaabe60fe47">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-77bf26b22cc1e155835d93fca328cfc0796e7b13.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-06f9a7c51a5bba2341db76ce3233ebf065601e2d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-9e967c412728afaff84125d8a814b2b142e2d2f5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9c9dea9e85aceb09d95df5e6f7bc8a43fc286068">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-f36960a2ec5398a61241c42b5ab65b5dedd8216f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="565a01f90f1529f73362707c4c185d0623a68782">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-dc8021ff68118e8878648b7997607fe7b70ea3a3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e5bf453b070c1e39297986144960e45afa0fdfad">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-224e5aa08afac070ab29334eeccceb1a477b55b4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3988694bf9d8186ff97ad5cdfa4ed88b5010fe08">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-8f6bcbeb98aa8ae746adcec27813a3a891bb1625.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rogger\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="C:\Users\Rogger\Documents\StudioProjects\FoodTrucker\ParseStarterProject\build\intermediates\pre-dexed\debug\butterknife-7.0.1-46455898aa91030f6b0596a7835f7ea8ffa7cda2.jar" />
     </item>
 
 </items>

@@ -25,6 +25,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -100,14 +101,19 @@ public class MainActivity extends AppCompatActivity {
 
                           } else if (user.isNew()) {
                               Log.d("MyApp", "User signed up and logged in through Facebook!");
+                              Utils.parseUser=user;
                               Intent intent = new Intent(MainActivity.this, Register.class);
                               startActivity(intent);
                               Utils.user.setFacebook(true);
 
                           } else {
                               Log.d("MyApp", "User logged in through Facebook!");
+
+
                               Intent intent = new Intent(MainActivity.this, Inicio.class);
                               startActivity(intent);
+                              Toast t=Toast.makeText(MainActivity.this,"Login de Fb correcto",Toast.LENGTH_LONG);
+                              t.show();
                               Utils.user.setFacebook(true);
                           }
                       } else {

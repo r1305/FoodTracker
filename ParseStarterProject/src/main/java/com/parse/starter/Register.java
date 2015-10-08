@@ -27,6 +27,7 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -67,6 +68,7 @@ public class Register extends AppCompatActivity {
                         try {
                             Utils.user.setFbid(object.getString("id"));
                             Utils.user.setNombre(object.getString("name"));
+
                             Utils.user.setEmail(object.getString("email"));
                             Utils.user.setSexo(object.getString("gender"));
                             Utils.user.setUrlFoto("https://graph.facebook.com/" + Utils.user.getFbid() + "/picture?height=400&width=400");
@@ -81,7 +83,7 @@ public class Register extends AppCompatActivity {
                                     sex.check(R.id.femenino);
                                     break;
                             }
-                            new DownloadImageTask(profile_image,true).execute(Utils.user.getUrlFoto());
+                            new DownloadImageTask(profile_image, true).execute(Utils.user.getUrlFoto());
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -100,13 +102,16 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
-        Bitmap bitmap = ((BitmapDrawable) profile_image.getDrawable()).getBitmap();
+        final Bitmap bitmap = ((BitmapDrawable) profile_image.getDrawable()).getBitmap();
         new BitmapToByteArray().execute(bitmap);
 
 
 
         if (Utils.user.isFacebook()) {
             getFbData();
+            name.setText(Utils.user.getNombre());
+            email.setText(Utils.user.getEmail());
+            profile_image.setImageBitmap(bitmap);
         }
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,22 +119,20 @@ public class Register extends AppCompatActivity {
                 openGallery();
             }
         });
-
-
-
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 String pass = psw.getText().toString();
                 if (Utils.parseUser == null) {
                     Utils.parseUser = new ParseUser();
                 }
                 Utils.parseUser.setUsername(email.getText().toString());
+                Utils.parseUser.put("username",email.getText().toString());
                 Utils.parseUser.setEmail(email.getText().toString());
                 Utils.parseUser.setPassword(pass);
                 Utils.parseUser.put("name", name.getText().toString());
+
 
                 switch (sex.getCheckedRadioButtonId()) {
                     case R.id.masculino:
@@ -148,14 +151,21 @@ public class Register extends AppCompatActivity {
                             Utils.parseUser.saveInBackground(new SaveCallback() {
                                 @Override
                                 public void done(ParseException e) {
-                                    Intent intent = new Intent(Register.this, Inicio.class);
-                                    startActivity(intent);
-                                    Register.this.finish();
-                                    Utils.parseUser = null;
+                                    Utils.parseUser.signUpInBackground(new SignUpCallback() {
+
+                                        @Override
+                                        public void done(ParseException e) {
+                                            Intent intent = new Intent(Register.this, Inicio.class);
+                                            startActivity(intent);
+                                            Register.this.finish();
+                                            Utils.parseUser = null;
+                                        }
+                                    });
                                 }
                             });
                         } else {
                             Utils.parseUser.signUpInBackground(new SignUpCallback() {
+
                                 @Override
                                 public void done(ParseException e) {
                                     Intent intent = new Intent(Register.this, Inicio.class);
@@ -167,6 +177,8 @@ public class Register extends AppCompatActivity {
                         }
                     }
                 });
+
+
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -178,9 +190,6 @@ public class Register extends AppCompatActivity {
             }
         });
     }
-
-
-
 
     private void openGallery() {
         Intent gallery =
