@@ -1,23 +1,23 @@
 package com.parse.starter;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
+
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,18 +25,14 @@ import org.json.JSONObject;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.parse.GetCallback;
-import com.parse.GetDataCallback;
-import com.parse.LogInCallback;
+
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
-import java.util.AbstractList;
 
 import Utilities.BitmapToByteArray;
 import Utilities.DownloadImageTask;
@@ -54,7 +50,7 @@ public class Register extends AppCompatActivity {
     @Bind(R.id.passwordTxt)EditText psw;
     @Bind(R.id.sexGroup)RadioGroup sex;
     @Bind(R.id.profile_image) ImageView profile_image;
-    private static final int PICK_IMAGE = 100;
+    private static final int PICK_IMAGE = 200;
 
     private void getFbData() {
         GraphRequest request = GraphRequest.newMeRequest(
@@ -159,6 +155,8 @@ public class Register extends AppCompatActivity {
                                             startActivity(intent);
                                             Register.this.finish();
                                             Utils.parseUser = null;
+                                            Toast t= Toast.makeText(Register.this,"Bienvenido "+Utils.user.getNombre(),Toast.LENGTH_LONG );
+                                            t.show();
                                         }
                                     });
                                 }
@@ -172,6 +170,8 @@ public class Register extends AppCompatActivity {
                                     startActivity(intent);
                                     Register.this.finish();
                                     Utils.parseUser = null;
+                                    Toast t= Toast.makeText(Register.this,"Bienvenido "+Utils.user.getNombre(),Toast.LENGTH_LONG );
+                                    t.show();
                                 }
                             });
                         }

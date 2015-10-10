@@ -9,25 +9,16 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import Utilities.DownloadImageTask;
-import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -51,10 +42,12 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         ButterKnife.bind(this);
-        toolbar.setTitle("Menu");
+
         toolbar.setNavigationIcon(R.drawable.menu);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +56,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
             }
         });
+
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         if (currentUser != null) {
@@ -103,9 +97,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     }
 
 
-
-
-
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -116,15 +107,17 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                         PerfilFragment.newInstance();
 
                 ft.replace(R.id.flaContenido, perfil);
+                toolbar.setTitle("Perfil");
 
                 ft.commit();
                 dl.closeDrawers();
                 return true;
             case R.id.gustos:
                 Fragment secondFragment =
-                        SecondFragment.newInstance();
+                        GustosFragment.newInstance();
 
                 ft.replace(R.id.flaContenido, secondFragment);
+                toolbar.setTitle("Gustos");
                 ft.commit();
                 dl.closeDrawers();
                 return true;
@@ -134,6 +127,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                         ListTruckersFragment.newInstance();
 
                 ft.replace(R.id.flaContenido, listado);
+                toolbar.setTitle("Truckers");
                 ft.commit();
                 dl.closeDrawers();
                 return true;

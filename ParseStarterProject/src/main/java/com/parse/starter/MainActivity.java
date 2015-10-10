@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -40,7 +41,8 @@ import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.FbLoginBtn) Button FbLoginBtn;
+    @Bind(R.id.FbLoginBtn)
+    ImageButton FbLoginBtn;
     @Bind(R.id.registrar) Button registrar;
     @Bind(R.id.login_email)EditText email;
     @Bind(R.id.login_password)EditText psw;

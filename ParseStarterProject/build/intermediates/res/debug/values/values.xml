@@ -1387,6 +1387,14 @@ available. Please contact the developer for assistance.</string>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
+    <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="FacebookLoginButton">
+
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
     <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/values/values.xml -->
     <eat-comment/>
     <style name="MessengerButton">
