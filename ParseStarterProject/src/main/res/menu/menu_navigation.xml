@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/trucker"
+            android:icon="@drawable/car"
+            android:title="Food Truckers"
+            />
+
+        <item
+            android:id="@+id/gustos"
+            android:title="Gustos"
+            android:icon="@drawable/likes"
+            />
+        <item
+            android:id="@+id/perfil"
+            android:title="Perfil"
+            android:icon="@drawable/perfil"/>
+        <item
+            android:id="@+id/logout"
+            android:title="Salir"
+            android:icon="@drawable/logout"/>
+
+</menu>
