@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -10,6 +10,7 @@
     android:background="#00BCD5"
     tools:context=".MainActivity"
     android:orientation="vertical">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,13 +31,13 @@
 
 
     <EditText
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="40sp"
         android:inputType="textEmailAddress"
         android:ems="10"
 
         android:id="@+id/login_email"
-        android:hint="E-Mail"
+        android:hint="Username"
         android:layout_marginTop="30dp"
         android:layout_above="@+id/login_password"
         android:layout_alignParentRight="true"
@@ -98,5 +99,4 @@
         android:id="@+id/FbLoginBtn"
         android:layout_marginTop="15dp"
         />
-
 </LinearLayout>
