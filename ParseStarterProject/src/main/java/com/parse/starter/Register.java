@@ -47,6 +47,7 @@ public class Register extends AppCompatActivity {
     Button cancel;
     @Bind(R.id.nameTxt)EditText name;
     @Bind(R.id.emailTxt)EditText email;
+    @Bind(R.id.user)EditText user;
     @Bind(R.id.passwordTxt)EditText psw;
     @Bind(R.id.sexGroup)RadioGroup sex;
     @Bind(R.id.profile_image) ImageView profile_image;
@@ -123,8 +124,8 @@ public class Register extends AppCompatActivity {
                 if (Utils.parseUser == null) {
                     Utils.parseUser = new ParseUser();
                 }
-                Utils.parseUser.setUsername(email.getText().toString());
-                Utils.parseUser.put("username",email.getText().toString());
+                Utils.parseUser.setUsername(user.getText().toString());
+                Utils.parseUser.put("username",user.getText().toString());
                 Utils.parseUser.setEmail(email.getText().toString());
                 Utils.parseUser.setPassword(pass);
                 Utils.parseUser.put("name", name.getText().toString());
@@ -151,12 +152,13 @@ public class Register extends AppCompatActivity {
 
                                         @Override
                                         public void done(ParseException e) {
-                                            Intent intent = new Intent(Register.this, Inicio.class);
+                                            Intent intent = new Intent(Register.this, GustosActivity.class);
+                                            Toast t= Toast.makeText(Register.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
+                                            t.show();
                                             startActivity(intent);
                                             Register.this.finish();
                                             Utils.parseUser = null;
-                                            Toast t= Toast.makeText(Register.this,"Bienvenido "+Utils.user.getNombre(),Toast.LENGTH_LONG );
-                                            t.show();
+
                                         }
                                     });
                                 }
@@ -166,12 +168,13 @@ public class Register extends AppCompatActivity {
 
                                 @Override
                                 public void done(ParseException e) {
-                                    Intent intent = new Intent(Register.this, Inicio.class);
+                                    Intent intent = new Intent(Register.this, GustosActivity.class);
+                                    Toast t= Toast.makeText(Register.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
+                                    t.show();
                                     startActivity(intent);
                                     Register.this.finish();
                                     Utils.parseUser = null;
-                                    Toast t= Toast.makeText(Register.this,"Bienvenido "+Utils.user.getNombre(),Toast.LENGTH_LONG );
-                                    t.show();
+
                                 }
                             });
                         }

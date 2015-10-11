@@ -15,8 +15,9 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/trucker"
-        android:layout_above="@+id/frase"/>
+        android:src="@drawable/logo"
+        android:layout_above="@+id/frase"
+        android:paddingBottom="15dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

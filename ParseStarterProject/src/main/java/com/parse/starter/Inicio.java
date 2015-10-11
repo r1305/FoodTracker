@@ -2,6 +2,7 @@ package com.parse.starter;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -35,7 +36,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     CircleImageView img;
     @Bind(R.id.txt_nav)
     TextView txt_nav;
-
+    FragmentTransaction ft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,17 +58,41 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
             }
         });
 
+        Fragment frag1 = ListTruckersFragment.newInstance();
+        ft = getFragmentManager().beginTransaction();
+
+        ft.replace(R.id.flaContenido, frag1);
+        ft.commit();
+
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment imgperfil =
+                        PerfilFragment.newInstance();
+                FragmentTransaction ft1=getFragmentManager().beginTransaction();
+                ft1.replace(R.id.flaContenido, imgperfil);
+                toolbar.setTitle("Perfil");
+                ft1.commit();
+                dl.closeDrawers();
+
+            }
+        });
+
+        nav.setNavigationItemSelectedListener(this);
+
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         if (currentUser != null) {
             txt_nav.setText(currentUser.getString("name"));
 
             ParseFile applicantResume = (ParseFile)currentUser.get("foto");
+
             applicantResume.getDataInBackground(new GetDataCallback() {
                 public void done(byte[] data, ParseException e) {
                     if (e == null) {
 
                         img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+
 
                     } else {
                         // something went wrong
@@ -86,13 +111,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         }
 
 
-        Fragment frag1 = ListTruckersFragment.newInstance();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
 
-        ft.replace(R.id.flaContenido, frag1);
-        ft.commit();
-
-        nav.setNavigationItemSelectedListener(this);
 
     }
 
@@ -131,6 +150,17 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 ft.commit();
                 dl.closeDrawers();
                 return true;
+            case R.id.logout:
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                currentUser.logOut();
+                Intent i=new Intent(Inicio.this,MainActivity.class);
+                startActivity(i);
+                Inicio.this.finish();
+                return true;
+
+
+
+
         }
 
         return false;

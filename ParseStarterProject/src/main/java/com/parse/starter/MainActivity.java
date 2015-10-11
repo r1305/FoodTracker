@@ -103,10 +103,13 @@ public class MainActivity extends AppCompatActivity {
 
                           } else if (user.isNew()) {
                               Log.d("MyApp", "User signed up and logged in through Facebook!");
+                              Toast t=Toast.makeText(MainActivity.this,"Usuario nuevo",Toast.LENGTH_LONG);
+                              t.show();
                               Utils.parseUser=user;
                               Intent intent = new Intent(MainActivity.this, Register.class);
                               startActivity(intent);
                               Utils.user.setFacebook(true);
+                              MainActivity.this.finish();
 
                           } else {
                               Log.d("MyApp", "User logged in through Facebook!");
@@ -117,9 +120,13 @@ public class MainActivity extends AppCompatActivity {
                               Toast t=Toast.makeText(MainActivity.this,"Login de Fb correcto",Toast.LENGTH_LONG);
                               t.show();
                               Utils.user.setFacebook(true);
+                              MainActivity.this.finish();
                           }
                       } else {
                           Log.e("ErrorFB", err.getMessage().toString());
+                          Toast t=Toast.makeText(MainActivity.this, err.toString(),Toast.LENGTH_LONG);
+                          t.show();
+
                       }
 
 

@@ -276,6 +276,11 @@
     <dimen name="fab_border_width">0.5dp</dimen>
     <dimen name="fab_content_size">24dp</dimen>
     <dimen name="fab_elevation">8dp</dimen>
+    <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/values/values.xml -->
+    <eat-comment/>
     <dimen name="fab_size_mini">40dp</dimen>
     <dimen name="fab_size_normal">56dp</dimen>
     <dimen name="fab_translation_z_pressed">6dp</dimen>
@@ -441,6 +446,7 @@ available. Please contact the developer for assistance.</string>
     <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="title_activity_fblogin_result">FBLoginResult</string>
+    <string name="title_activity_gustos">GustosActivity</string>
     <string name="title_activity_inicio">Inicio</string>
     <string name="title_activity_register">Register</string>
     <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.3.0/res/values/wallet_strings.xml -->
@@ -459,6 +465,8 @@ available. Please contact the developer for assistance.</string>
         <item name="android:windowNoTitle">true</item>
 
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <!-- From: file:/C:/Users/Rogger/Documents/StudioProjects/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
