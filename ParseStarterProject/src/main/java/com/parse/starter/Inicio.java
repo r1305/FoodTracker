@@ -1,6 +1,7 @@
 package com.parse.starter;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -15,6 +16,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -36,7 +43,9 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     CircleImageView img;
     @Bind(R.id.txt_nav)
     TextView txt_nav;
-    FragmentTransaction ft;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,27 +67,17 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
             }
         });
 
-        Fragment frag1 = ListTruckersFragment.newInstance();
-        ft = getFragmentManager().beginTransaction();
-
-        ft.replace(R.id.flaContenido, frag1);
-        ft.commit();
-
-        img.setOnClickListener(new View.OnClickListener() {
+        OnMapReadyCallback m=new OnMapReadyCallback() {
             @Override
-            public void onClick(View view) {
-                Fragment imgperfil =
-                        PerfilFragment.newInstance();
-                FragmentTransaction ft1=getFragmentManager().beginTransaction();
-                ft1.replace(R.id.flaContenido, imgperfil);
-                toolbar.setTitle("Perfil");
-                ft1.commit();
-                dl.closeDrawers();
-
+            public void onMapReady(GoogleMap map) {
+                map.addMarker(new MarkerOptions()
+                        .position(new LatLng(0, 0))
+                        .title("Marker"));
             }
-        });
+        };
 
-        nav.setNavigationItemSelectedListener(this);
+
+
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
@@ -92,7 +91,16 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                     if (e == null) {
 
                         img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+                        img.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Fragment frag1 = PerfilFragment.newInstance();
+                                FragmentTransaction ft1 = getFragmentManager().beginTransaction();
 
+                                ft1.replace(R.id.flaContenido, frag1);
+                                ft1.commit();
+                            }
+                        });
 
                     } else {
                         // something went wrong
@@ -111,7 +119,13 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         }
 
 
+        Fragment frag1 = ListTruckersFragment.newInstance();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
 
+        ft.replace(R.id.flaContenido, frag1);
+        ft.commit();
+
+        nav.setNavigationItemSelectedListener(this);
 
     }
 
@@ -127,7 +141,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
                 ft.replace(R.id.flaContenido, perfil);
                 toolbar.setTitle("Perfil");
-
                 ft.commit();
                 dl.closeDrawers();
                 return true;
@@ -157,16 +170,25 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 startActivity(i);
                 Inicio.this.finish();
                 return true;
+            case R.id.maps:
 
+                Fragment mMapFragment = MapFragment.newInstance();
+                ft.replace(R.id.flaContenido,mMapFragment);
+                toolbar.setTitle("Mapa");
+                ft.commit();
+                dl.closeDrawers();
+                return true;
 
+            case R.id.maps1:
 
+                Intent i1=new Intent(Inicio.this,MapsActivity.class);
+                startActivity(i1);
+                return true;
 
         }
 
         return false;
     }
-
-
 
 
 }

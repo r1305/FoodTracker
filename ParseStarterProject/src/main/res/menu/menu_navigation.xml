@@ -16,9 +16,19 @@
             android:id="@+id/perfil"
             android:title="Perfil"
             android:icon="@drawable/perfil"/>
-        <item
-            android:id="@+id/logout"
-            android:title="Salir"
-            android:icon="@drawable/logout"/>
+    <item
+        android:id="@+id/maps"
+        android:title="Mapa"
+        />
+
+    <item
+        android:id="@+id/maps1"
+        android:title="Mapa1"
+        />
+    <item
+        android:id="@+id/logout"
+        android:title="Salir"
+        android:icon="@drawable/logout"/>
+
 
 </menu>

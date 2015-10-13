@@ -6,13 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by Rogger on 05/10/2015.
- */
 public class ListTruckersFragment extends Fragment {
 
     public static ListTruckersFragment newInstance(){
-        return new ListTruckersFragment();
+
+        ListTruckersFragment fragment = new ListTruckersFragment();
+        return fragment;
     }
 
     public ListTruckersFragment() {
@@ -23,7 +22,11 @@ public class ListTruckersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
         return inflater.inflate(R.layout.fragment_listtruckers, container, false);
     }
+
+
 
 }

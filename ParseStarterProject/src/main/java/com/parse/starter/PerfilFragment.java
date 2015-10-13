@@ -3,11 +3,14 @@ package com.parse.starter;
 import android.app.Fragment;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -25,13 +28,14 @@ public class PerfilFragment extends Fragment {
     ImageView img;
     @Bind(R.id.correo_perfil)
     TextView email;
-
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
 
 
 
     public static PerfilFragment newInstance(){
-
-        return new PerfilFragment();
+        PerfilFragment fragment=new PerfilFragment();
+        return fragment;
     }
 
     public PerfilFragment() {
@@ -49,23 +53,39 @@ public class PerfilFragment extends Fragment {
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast t=Toast.makeText(getActivity(), "Editar Perfil", Toast.LENGTH_LONG);
+                t.show();
+
+            }
+        });
+
 
         if (currentUser != null) {
             txt.setText(currentUser.getString("name"));
             email.setText(currentUser.getEmail());
+            try {
+                ParseFile applicantResume = (ParseFile) currentUser.get("foto");
+                applicantResume.getDataInBackground(new GetDataCallback() {
+                    public void done(byte[] data, ParseException e) {
+                        if (e == null) {
 
-            ParseFile applicantResume = (ParseFile)currentUser.get("foto");
-            applicantResume.getDataInBackground(new GetDataCallback() {
-                public void done(byte[] data, ParseException e) {
-                    if (e == null) {
+                            img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
 
-                        img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+                        } else {
+                            // something went wrong
+                            Toast t = Toast.makeText(getActivity(), "No se pudo obtener la foto", Toast.LENGTH_LONG);
+                            t.show();
 
-                    } else {
-                        // something went wrong
+                        }
                     }
-                }
-            });
+                });
+            }catch(Exception e){
+                Toast t = Toast.makeText(getActivity(), "No se pudo obtener la foto", Toast.LENGTH_LONG);
+                t.show();
+            }
 
 
 
