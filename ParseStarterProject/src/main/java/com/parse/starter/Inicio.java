@@ -47,6 +47,8 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,17 +68,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
             }
         });
-
-        OnMapReadyCallback m=new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap map) {
-                map.addMarker(new MarkerOptions()
-                        .position(new LatLng(0, 0))
-                        .title("Marker"));
-            }
-        };
-
-
 
 
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -99,6 +90,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
                                 ft1.replace(R.id.flaContenido, frag1);
                                 ft1.commit();
+                                dl.closeDrawers();
                             }
                         });
 
@@ -171,15 +163,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 Inicio.this.finish();
                 return true;
             case R.id.maps:
-
-                Fragment mMapFragment = MapFragment.newInstance();
-                ft.replace(R.id.flaContenido,mMapFragment);
-                toolbar.setTitle("Mapa");
-                ft.commit();
-                dl.closeDrawers();
-                return true;
-
-            case R.id.maps1:
 
                 Intent i1=new Intent(Inicio.this,MapsActivity.class);
                 startActivity(i1);
