@@ -7,6 +7,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,17 +24,27 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
     @Bind(R.id.dl_maps)
     DrawerLayout dl;
     @Bind(R.id.toolbar_maps)
     Toolbar toolbar;
+
+    GestureDetector gestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,49 +72,76 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
+
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
         LatLng total = new LatLng(-12.084756,-76.9730044);
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-12.084756, -76.9730044))
-                .title("Ulima").snippet("Anticuchos").icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-12.1323262, -76.9838797))
-                .title("Richi").snippet("Empanadas").icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-12.1316723, -76.9802212))
-                .title("UPIG").snippet("Postres").icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(total, 11));
-        ;
-        mMap.setMyLocationEnabled(true);
-        mMap.setTrafficEnabled(true);
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(MapsActivity.this, marker.getTitle(), Toast.LENGTH_LONG).show();
-                return false;
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Truckers");
+        query.getInBackground("WPQKCtbHou", new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    String info = "";
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(-12.084756, -76.9730044))
+                            .title(object.get("name").toString())
+                            .snippet(object.get("tipo").toString() + info)
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
+
+
+                } else {
+                    // something went wrong
+                }
             }
         });
+        ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Truckers");
+        query1.getInBackground("gEQa5JtVCU", new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(-12.1323262, -76.9838797))
+                            .title(object.get("name").toString())
+                            .snippet(object.get("tipo").toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
+
+                } else {
+                    // something went wrong
+                }
+            }
+        });
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Truckers");
+        query2.getInBackground("5VVwOdjQFQ", new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(-12.1316723, -76.9802212))
+                            .title(object.get("name").toString())
+                            .snippet(object.get("tipo").toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)))
+                    ;
+
+                } else {
+                    // something went wrong
+                }
+            }
+        });
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(total, 11));
+        mMap.setMyLocationEnabled(true);
+        mMap.setTrafficEnabled(true);
+
         UiSettings u=mMap.getUiSettings();
         u.setZoomControlsEnabled(true);
-        u.setMapToolbarEnabled(true);
+
+
 
     }
     @Override
     public void onBackPressed(){
         MapsActivity.this.finish();
     }
+
+
 
 }
