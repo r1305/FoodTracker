@@ -1,10 +1,10 @@
 package com.parse.starter;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +30,10 @@ public class PerfilFragment extends Fragment {
     TextView email;
     @Bind(R.id.fab)
     FloatingActionButton fab;
+    @Bind(R.id.user_perfil)
+    TextView user;
+
+
 
 
 
@@ -51,13 +55,15 @@ public class PerfilFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_perfil, container, false);
         ButterKnife.bind(this, rootView);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        final ParseUser currentUser = ParseUser.getCurrentUser();
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast t=Toast.makeText(getActivity(), "Editar Perfil", Toast.LENGTH_LONG);
-                t.show();
+
+                Intent i=new Intent(getActivity(),EditProfileActivity.class);
+                startActivity(i);
+                getActivity().finish();
 
             }
         });
@@ -66,6 +72,7 @@ public class PerfilFragment extends Fragment {
         if (currentUser != null) {
             txt.setText(currentUser.getString("name"));
             email.setText(currentUser.getEmail());
+            user.setText(currentUser.getUsername());
             try {
                 ParseFile applicantResume = (ParseFile) currentUser.get("foto");
                 applicantResume.getDataInBackground(new GetDataCallback() {

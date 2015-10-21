@@ -1,11 +1,11 @@
 package com.parse.starter;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,23 +16,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.GetDataCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -50,16 +37,18 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     CircleImageView img;
     @Bind(R.id.txt_nav)
     TextView txt_nav;
+    FloatingActionButton fab;
 
 
 
 
 
-
+    ParseUser currentUser = ParseUser.getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+        fab=(FloatingActionButton)findViewById(R.id.fab);
         ButterKnife.bind(this);
 
         toolbar.setNavigationIcon(R.drawable.menu);
@@ -73,11 +62,10 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
             public void onClick(View view) {
                 dl.openDrawer(GravityCompat.START);
 
+
             }
         });
 
-
-        ParseUser currentUser = ParseUser.getCurrentUser();
 
         if (currentUser != null) {
             txt_nav.setText(currentUser.getString("name"));
@@ -132,7 +120,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-
         switch(menuItem.getItemId()){
             case R.id.perfil:
                 Fragment perfil =
@@ -171,14 +158,26 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 return true;
             case R.id.maps:
 
-                Intent i1=new Intent(Inicio.this,MapsActivity.class);
-                startActivity(i1);
+                i=new Intent(Inicio.this,MapsActivity.class);
+                startActivity(i);
+                Inicio.this.finish();
                 return true;
+
+            case R.id.fab:
+
+
+                i=new Intent(Inicio.this,EditProfileActivity.class);
+                startActivity(i);
+                Inicio.this.finish();
+                return true;
+
 
         }
 
         return false;
     }
+
+
 
 
 }

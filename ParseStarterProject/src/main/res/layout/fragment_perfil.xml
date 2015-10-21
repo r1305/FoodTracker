@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -35,10 +35,9 @@
                 >
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Datos"
-                    android:gravity="center_horizontal"
-                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
                     android:textSize="30dp"/>
 
 
@@ -46,26 +45,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50sp"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
 
-                        android:text="Nombre"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="15dp"
-                        android:gravity="center_horizontal"/>
+                    android:textSize="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="Nombre  "
+                    android:gravity="center"/>
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="50sp"
                         android:id="@+id/name_perfil"
-                        android:textSize="20dp"
+                        android:textSize="22dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/app_name"
-                        android:gravity="center_horizontal"
+                        android:gravity="center"
                         />
 
             </LinearLayout>
@@ -77,20 +76,42 @@
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
 
-                    android:textSize="20dp"
+                    android:textSize="22dp"
                     android:layout_marginLeft="15dp"
                     android:text="Correo   "
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center"/>
                 <TextView
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50sp"
                     android:id="@+id/correo_perfil"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:layout_marginLeft="15dp"
                     android:text="@string/app_name"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:textSize="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="Usuario  "
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="50sp"
+                    android:id="@+id/user_perfil"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/app_name"
+                    android:gravity="center"/>
             </LinearLayout>
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
@@ -99,7 +120,10 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
                 android:src="@drawable/pencil"
+                android:tint="@android:color/white"
+                app:backgroundTint="#00BCD5"
                 />
+
 
         </LinearLayout>
 

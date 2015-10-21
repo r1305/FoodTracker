@@ -42,7 +42,8 @@
         android:layout_above="@+id/login_password"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="#FFFFFF"/>
+        android:background="#FFFFFF"
+        android:gravity="center"/>
 
     <EditText
         android:layout_width="fill_parent"
@@ -55,7 +56,8 @@
         android:hint="**********"
         android:layout_above="@+id/linearLayout"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:gravity="center"/>
 
     <LinearLayout
         android:orientation="horizontal"
