@@ -47,7 +47,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.previous);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         toolbar.setTitle("Editando");
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

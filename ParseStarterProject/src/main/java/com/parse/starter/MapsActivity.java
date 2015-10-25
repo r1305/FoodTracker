@@ -45,7 +45,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         ButterKnife.bind(this);
 
-        toolbar.setNavigationIcon(R.drawable.previous);
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

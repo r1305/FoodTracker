@@ -3130,8 +3130,8 @@ containing a value of this type.
         public static final int design_navigation_item_separator=0x7f040028;
         public static final int design_navigation_item_subheader=0x7f040029;
         public static final int design_navigation_menu=0x7f04002a;
-        public static final int fragment_lima_sabrosa =0x7f04002b;
-        public static final int fragment_gustos=0x7f04002c;
+        public static final int fragment_gustos=0x7f04002b;
+        public static final int fragment_lima_sabrosa=0x7f04002c;
         public static final int fragment_listtruckers=0x7f04002d;
         public static final int fragment_perfil=0x7f04002e;
         public static final int listview_item_row=0x7f04002f;
