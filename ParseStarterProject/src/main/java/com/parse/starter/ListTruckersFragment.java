@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -45,6 +43,9 @@ public class ListTruckersFragment extends Fragment {
     @Bind(R.id.tipo1)TextView tp1;
     @Bind(R.id.tipo2)TextView tp2;
     @Bind(R.id.tipo3)TextView tp3;
+    @Bind(R.id.id1)LinearLayout l1;
+    @Bind(R.id.id2)LinearLayout l2;
+    @Bind(R.id.id3)LinearLayout l3;
 
 
     @Override
@@ -55,6 +56,20 @@ public class ListTruckersFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_listtruckers, container, false);
 
         ButterKnife.bind(this,rootView);
+
+        l1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment lima =
+                        LimaSabrosaFragment.newInstance();
+
+                ft.replace(R.id.flaContenido, lima);
+                ft.commit();
+
+            }
+        });
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Truckers");
         query.getInBackground("WPQKCtbHou", new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
