@@ -72,8 +72,6 @@ public class ListTruckersFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         ParseObject po = (ParseObject) view.getTag();
-                        Toast.makeText(getActivity(), po.getObjectId(), Toast.LENGTH_SHORT).show();
-
                         FragmentTransaction ft=getFragmentManager().beginTransaction();
                         Fragment menu=MenuFragment.newInstance(po.getObjectId());
                         ft.replace(R.id.flaContenido, menu);

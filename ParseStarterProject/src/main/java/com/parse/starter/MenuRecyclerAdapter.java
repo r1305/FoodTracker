@@ -42,7 +42,7 @@ public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapte
 
         ParseObject po = list.get(position);
         holder.title.setText(po.getString("menu"));
-        holder.precio.setText(po.getString("precio"));
+        holder.precio.setText(po.getNumber("precio").toString());
         ParseFile applicantResume = (ParseFile)po.get("foto");
 
         applicantResume.getDataInBackground(new GetDataCallback() {
