@@ -17,12 +17,6 @@ public class Utils {
     public static ParseUser parseUser = null;
     public static byte[] imageBuffer = null;
     public static boolean bufferingImage = false;
-    public static Calendar datePick = Calendar.getInstance();
-    public static Marker startPoint;
-    public static Marker endPoint;
-    public static String startAddress;
-    public static String endAddress;
-    public static Polyline ruta;
-    public static Bitmap bit;
+
 
 }
