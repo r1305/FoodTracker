@@ -18,9 +18,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * Created by Rogger on 26/10/2015.
- */
 public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapter.ViewHolder>{
 
 
@@ -42,7 +39,7 @@ public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapte
 
         ParseObject po = list.get(position);
         holder.title.setText(po.getString("menu"));
-        holder.precio.setText(po.getNumber("precio").toString());
+        holder.precio.setText("S/."+po.getNumber("precio").toString());
         ParseFile applicantResume = (ParseFile)po.get("foto");
 
         applicantResume.getDataInBackground(new GetDataCallback() {

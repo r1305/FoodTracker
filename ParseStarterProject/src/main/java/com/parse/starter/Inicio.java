@@ -68,9 +68,11 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
             @Override
             public void onClick(View view) {
                 dl.openDrawer(GravityCompat.START);
+                dl.animate();
                 
             }
         });
+
 
 
         if (currentUser != null) {
