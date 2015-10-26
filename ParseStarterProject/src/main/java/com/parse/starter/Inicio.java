@@ -62,13 +62,17 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        toolbar.animate();
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dl.openDrawer(GravityCompat.START);
-                dl.animate();
+                if(dl.isDrawerOpen(GravityCompat.START)){
+                    dl.closeDrawers();
+                }
+                toolbar.animate();
                 
             }
         });
