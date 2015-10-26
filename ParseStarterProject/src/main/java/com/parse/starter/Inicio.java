@@ -73,7 +73,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                     dl.closeDrawers();
                 }
                 toolbar.animate();
-                
             }
         });
 
@@ -94,7 +93,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                             public void onClick(View view) {
                                 Fragment frag1 = PerfilFragment.newInstance();
                                 FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-
                                 ft1.replace(R.id.flaContenido, frag1);
                                 ft1.commit();
                                 dl.closeDrawers();
