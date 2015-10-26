@@ -26,6 +26,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.parse.starter.R.drawable.abc_ic_ab_back_mtrl_am_alpha;
+
 
 public class Inicio extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Bind(R.id.drawer_layout)
@@ -44,12 +46,15 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
 
 
+
+
     ParseUser currentUser = ParseUser.getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         fab=(FloatingActionButton)findViewById(R.id.fab);
+
         ButterKnife.bind(this);
 
         toolbar.setNavigationIcon(R.drawable.menu);
@@ -58,13 +63,12 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dl.openDrawer(GravityCompat.START);
-
-
-
+                
             }
         });
 

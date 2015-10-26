@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
               ParseUser.logInInBackground(username, pass, new LogInCallback() {
                   public void done(ParseUser user, ParseException e) {
                       if (user != null) {
-                          Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
                           Intent intent = new Intent(MainActivity.this, Inicio.class);
                           startActivity(intent);
 
@@ -103,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
                           } else if (user.isNew()) {
                               Log.d("MyApp", "User signed up and logged in through Facebook!");
-                              Toast t=Toast.makeText(MainActivity.this,"Usuario nuevo",Toast.LENGTH_LONG);
-                              t.show();
                               Utils.parseUser=user;
                               Intent intent = new Intent(MainActivity.this, Register.class);
                               startActivity(intent);
@@ -117,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
                               Intent intent = new Intent(MainActivity.this, Inicio.class);
                               startActivity(intent);
-                              Toast t=Toast.makeText(MainActivity.this,"Login de Fb correcto",Toast.LENGTH_LONG);
-                              t.show();
                               Utils.user.setFacebook(true);
                               MainActivity.this.finish();
                           }

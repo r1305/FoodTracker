@@ -5,118 +5,12 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/id1">
+        android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
-                    android:id="@+id/img_truck1"
-                    android:src="@drawable/trucker"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="15sp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/truck1"
-                        android:textSize="25sp"
-                        android:text="@string/app_name"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tipo1"
-                        android:textSize="15sp"
-                        android:text="@string/app_name"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/id2">
-
-                <ImageView
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
-                    android:id="@+id/img_truck2"
-                    android:src="@drawable/trucker"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="15sp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/truck2"
-                        android:textSize="25sp"
-                        android:text="@string/app_name"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tipo2"
-                        android:textSize="15sp"
-                        android:text="@string/app_name"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-                android:id="@+id/id3">
-
-            <ImageView
-                android:layout_width="150sp"
-                android:layout_height="150sp"
-                android:id="@+id/img_truck3"
-                android:src="@drawable/trucker"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_marginLeft="15sp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/truck3"
-                    android:textSize="25sp"
-                    android:text="@string/app_name"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tipo3"
-                    android:textSize="15sp"
-                    android:text="@string/app_name"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>
