@@ -23,10 +23,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment{
 
-//    @Bind(R.id.return_fab)
-//    FloatingActionButton fab;
     @Bind(R.id.recycler_view_menu)
     RecyclerView recyclerView;
 
@@ -56,17 +54,9 @@ public class MenuFragment extends Fragment {
 
         recyclerView=(RecyclerView)rootView.findViewById(R.id.recycler_view_menu);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
 
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                Fragment lista =ListTruckersFragment.newInstance();
-//
-//                ft.replace(R.id.flaContenido, lista);
-//                ft.commit();
-//            }
-//        });
+
 
         return rootView;
     }

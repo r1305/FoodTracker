@@ -3,12 +3,14 @@ package com.parse.starter;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -29,7 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static com.parse.starter.R.drawable.abc_ic_ab_back_mtrl_am_alpha;
 
 
-public class Inicio extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Inicio extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Bind(R.id.drawer_layout)
     DrawerLayout dl;
     @Bind(R.id.toolbar)
@@ -41,11 +43,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     @Bind(R.id.txt_nav)
     TextView txt_nav;
     FloatingActionButton fab;
-
-
-
-
-
+    private ActionBarDrawerToggle mDrawerToggle;
 
 
     ParseUser currentUser = ParseUser.getCurrentUser();
@@ -126,7 +124,35 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
     }
 
+    private void setupDrawer() {
+        mDrawerToggle = new ActionBarDrawerToggle(this,dl, R.string.app_name, R.string.app_name) {
 
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle("Menu");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getSupportActionBar().setTitle("Inicio");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        dl.setDrawerListener(mDrawerToggle);
+    }
+
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -186,6 +212,8 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
         return false;
     }
+
+
 
 
 
