@@ -1,5 +1,6 @@
 package com.parse.starter;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -8,10 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -19,8 +23,11 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import javax.security.auth.callback.Callback;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Rogger on 27/10/2015.
@@ -35,6 +42,8 @@ public class DetailsFragment extends Fragment {
     TextView promo;
     @Bind(R.id.nombre)
     TextView nombre;
+    @Bind(R.id.foto)
+    CircleImageView foto;
 
     public DetailsFragment() {
     }
@@ -64,6 +73,26 @@ public class DetailsFragment extends Fragment {
                 nombre.setText(object.getString("menu"));
                 promo.setText(object.getString("oferta"));
                 precio.setText(object.getNumber("precio").toString());
+                try {
+                    ParseFile applicantResume = (ParseFile) object.get("foto");
+                    applicantResume.getDataInBackground(new GetDataCallback() {
+                        public void done(byte[] data, ParseException e) {
+                            if (e == null) {
+
+                                foto.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+
+                            } else {
+                                // something went wrong
+                                Toast t = Toast.makeText(getActivity(), "No se pudo obtener la foto", Toast.LENGTH_LONG);
+                                t.show();
+
+                            }
+                        }
+                    });
+                }catch(Exception e1){
+                    Toast t = Toast.makeText(getActivity(), "No se pudo obtener la foto", Toast.LENGTH_LONG);
+                    t.show();
+                }
             }
         });
 
@@ -76,10 +105,6 @@ public class DetailsFragment extends Fragment {
                 ft.commit();
             }
         });
-
-
-
-
 
         return rootView;
     }

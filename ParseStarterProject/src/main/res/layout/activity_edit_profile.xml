@@ -150,6 +150,7 @@
                 android:src="@android:drawable/ic_menu_save"
                 android:tint="@android:color/background_dark"
                 app:backgroundTint="#00BCD5"
+                android:elevation="15dp"
                 app:rippleColor="@color/ripple_material_light"
                 />
 

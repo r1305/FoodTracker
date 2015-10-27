@@ -6,11 +6,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.parse.starter.MenuFragment"
     android:orientation="vertical">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_menu"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/nombre"
+            android:text="Nombre"
+            android:textSize="25dp"
+            android:background="#ffd700"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/return_fab"
@@ -22,6 +40,7 @@
         android:tint="@android:color/background_dark"
         app:backgroundTint="#00BCD5"
         app:rippleColor="@color/ripple_material_light"
+        android:elevation="5dp"
     />
 
 

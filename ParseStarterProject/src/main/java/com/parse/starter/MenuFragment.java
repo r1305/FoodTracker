@@ -2,6 +2,7 @@ package com.parse.starter;
 
 
 import android.app.FragmentTransaction;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
@@ -10,10 +11,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -29,6 +34,8 @@ public class MenuFragment extends Fragment{
     RecyclerView recyclerView;
     @Bind(R.id.return_fab)
     FloatingActionButton fab;
+    @Bind(R.id.nombre)
+    TextView nombre;
 
     public static MenuFragment newInstance(String objectId){
         MenuFragment fragment = new MenuFragment();
@@ -50,6 +57,16 @@ public class MenuFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_menu, container, false);
 
         ButterKnife.bind(this, rootView);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Truckers");
+        query.getInBackground(getArguments().getString("id"), new GetCallback<ParseObject>() {
+
+            @Override
+            public void done(ParseObject object, ParseException e) {
+                nombre.setText(object.getString("name"));
+
+                }
+            });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +90,7 @@ public class MenuFragment extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("menu");
         query.whereEqualTo("idTrucker", getArguments().getString("id"));
