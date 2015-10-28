@@ -61,7 +61,11 @@ public class TruckersRecyclerAdapter extends RecyclerView.Adapter<TruckersRecycl
 
     @Override
     public int getItemCount() {
-        return list.size();
+        if(list==null){
+            return 0;
+        }else {
+            return list.size();
+        }
     }
 
     public void setOnClickListener(View.OnClickListener listener){

@@ -5,9 +5,14 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +24,12 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.callback.Callback;
@@ -44,6 +53,10 @@ public class DetailsFragment extends Fragment {
     TextView nombre;
     @Bind(R.id.foto)
     CircleImageView foto;
+    @Bind(R.id.ingredientes)
+    ListView ingredientes;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> listItems=new ArrayList<String>();
 
     public DetailsFragment() {
     }
@@ -63,6 +76,7 @@ public class DetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_details, container, false);
 
+
         ButterKnife.bind(this, rootView);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("menu");
@@ -72,7 +86,22 @@ public class DetailsFragment extends Fragment {
             public void done(ParseObject object, ParseException e) {
                 nombre.setText(object.getString("menu"));
                 promo.setText(object.getString("oferta"));
-                precio.setText(object.getNumber("precio").toString());
+                precio.setText("     S/." + object.getNumber("precio").toString());
+
+                JSONArray ing=object.getJSONArray("ingredientes");
+
+                for(int i=0;i<ing.length();i++){
+                    try {
+                        System.out.println(ing.get(i).toString());
+                        listItems.add(ing.get(i).toString());
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,listItems);
+
+                ingredientes.setAdapter(adapter);
+
                 try {
                     ParseFile applicantResume = (ParseFile) object.get("foto");
                     applicantResume.getDataInBackground(new GetDataCallback() {
