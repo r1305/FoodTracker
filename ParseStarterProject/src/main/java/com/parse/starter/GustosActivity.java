@@ -9,8 +9,11 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +43,7 @@ public class GustosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gustos_register);
         ButterKnife.bind(this);
+
 
 
         save_gustos.setOnClickListener(new View.OnClickListener() {

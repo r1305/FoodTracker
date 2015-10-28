@@ -32,6 +32,7 @@ public class ListTruckersFragment extends Fragment {
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
+    ParseQuery<ParseObject> query;
 
     public static ListTruckersFragment newInstance(){
 
@@ -52,18 +53,7 @@ public class ListTruckersFragment extends Fragment {
 
         recyclerView=(RecyclerView)rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Truckers");
+        query= ParseQuery.getQuery("Truckers");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
@@ -82,6 +72,18 @@ public class ListTruckersFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
             }
         });
+
+        ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+
 
     }
 

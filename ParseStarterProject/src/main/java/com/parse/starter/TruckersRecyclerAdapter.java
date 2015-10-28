@@ -13,17 +13,15 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * Created by Rogger on 26/10/2015.
- */
 public class TruckersRecyclerAdapter extends RecyclerView.Adapter<TruckersRecyclerAdapter.ViewHolder> {
 
-    List<ParseObject> list;
+    List<ParseObject> list=new ArrayList<>();
 
     View.OnClickListener listener;
 
@@ -44,18 +42,19 @@ public class TruckersRecyclerAdapter extends RecyclerView.Adapter<TruckersRecycl
         holder.type.setText(po.getString("tipo"));
         ParseFile applicantResume = (ParseFile)po.get("foto");
 
-        applicantResume.getDataInBackground(new GetDataCallback() {
-            public void done(byte[] data, ParseException e) {
-                if (e == null) {
+            applicantResume.getDataInBackground(new GetDataCallback() {
+                public void done(byte[] data, ParseException e) {
+                    if (e == null) {
 
-                    holder.image.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+                        holder.image.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
 
-                } else {
-                    // something went wrong
+                    } else {
+                        // something went wrong
 
+                    }
                 }
-            }
-        });
+            });
+
         holder.itemView.setTag(po);
         holder.itemView.setOnClickListener(listener);
     }

@@ -152,7 +152,7 @@ public class Register extends AppCompatActivity {
 
                                         @Override
                                         public void done(ParseException e) {
-                                            Intent intent = new Intent(Register.this, GustosActivity.class);
+                                            Intent intent = new Intent(Register.this, Inicio.class);
                                             Toast t= Toast.makeText(Register.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
                                             t.show();
                                             startActivity(intent);
@@ -168,7 +168,7 @@ public class Register extends AppCompatActivity {
 
                                 @Override
                                 public void done(ParseException e) {
-                                    Intent intent = new Intent(Register.this, GustosActivity.class);
+                                    Intent intent = new Intent(Register.this, Inicio.class);
                                     Toast t= Toast.makeText(Register.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
                                     t.show();
                                     startActivity(intent);
