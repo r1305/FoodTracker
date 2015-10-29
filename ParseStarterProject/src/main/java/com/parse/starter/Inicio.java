@@ -70,9 +70,8 @@ public class Inicio extends ActionBarActivity implements NavigationView.OnNaviga
                 if(dl.isDrawerOpen(GravityCompat.START)){
                     dl.closeDrawers();
                 }
-                toolbar.animate();
-            }
-        });
+                }
+            });
 
 
 
@@ -124,35 +123,7 @@ public class Inicio extends ActionBarActivity implements NavigationView.OnNaviga
 
     }
 
-    private void setupDrawer() {
-        mDrawerToggle = new ActionBarDrawerToggle(this,dl, R.string.app_name, R.string.app_name) {
 
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Menu");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                getSupportActionBar().setTitle("Inicio");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        dl.setDrawerListener(mDrawerToggle);
-    }
-
-
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();

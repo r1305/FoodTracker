@@ -9,20 +9,14 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONValue;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -102,10 +96,11 @@ public class GustosActivity extends AppCompatActivity {
 
                         l.add(postres.getText().toString());
                     }
-                    System.out.println("*****************"+l+"*********************");
+                    System.out.println("*****************" + l + "*********************");
 
 
-                    currentUser.addAllUnique("gustos", l);
+                    currentUser.remove("gustos");
+                    currentUser.addAllUnique("gustos",l);
                     currentUser.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {

@@ -47,5 +47,6 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.1.0'
     compile 'com.android.support:recyclerview-v7:23.1.0'
     compile files('C:/Users/Rogger/Documents/SW2/FoodTrucker/json-simple-1.1.1.jar')
+    compile files('C:/Users/Rogger/Documents/SW2/FoodTrucker/Parse-1.10.3/ParseFacebookUtilsV4-1.10.3.jar')
 }
 
