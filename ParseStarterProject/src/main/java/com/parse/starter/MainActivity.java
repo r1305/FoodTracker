@@ -1,9 +1,7 @@
 package com.parse.starter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -14,23 +12,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-import com.parse.SignUpCallback;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
       registrar.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              Intent intent = new Intent(MainActivity.this, Register.class);
+              Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
               startActivity(intent);
 
           }
@@ -103,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                           } else if (user.isNew()) {
                               Log.d("MyApp", "User signed up and logged in through Facebook!");
                               Utils.parseUser=user;
-                              Intent intent = new Intent(MainActivity.this, Register.class);
+                              Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                               startActivity(intent);
                               Utils.user.setFacebook(true);
                               MainActivity.this.finish();

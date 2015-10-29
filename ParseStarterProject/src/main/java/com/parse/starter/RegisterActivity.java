@@ -40,7 +40,7 @@ import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     @Bind(R.id.register_okBtn)
     Button ok;
     @Bind(R.id.register_cancelBtn)
@@ -152,11 +152,11 @@ public class Register extends AppCompatActivity {
 
                                         @Override
                                         public void done(ParseException e) {
-                                            Intent intent = new Intent(Register.this, Inicio.class);
-                                            Toast t= Toast.makeText(Register.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
+                                            Intent intent = new Intent(RegisterActivity.this, Inicio.class);
+                                            Toast t= Toast.makeText(RegisterActivity.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
                                             t.show();
                                             startActivity(intent);
-                                            Register.this.finish();
+                                            RegisterActivity.this.finish();
                                             Utils.parseUser = null;
 
                                         }
@@ -168,11 +168,11 @@ public class Register extends AppCompatActivity {
 
                                 @Override
                                 public void done(ParseException e) {
-                                    Intent intent = new Intent(Register.this,Inicio.class);
-                                    Toast t= Toast.makeText(Register.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
+                                    Intent intent = new Intent(RegisterActivity.this,Inicio.class);
+                                    Toast t= Toast.makeText(RegisterActivity.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
                                     t.show();
                                     startActivity(intent);
-                                    Register.this.finish();
+                                    RegisterActivity.this.finish();
                                     Utils.parseUser = null;
 
                                 }
@@ -187,7 +187,7 @@ public class Register extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Register.this, MainActivity.class);
+                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

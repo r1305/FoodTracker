@@ -43,7 +43,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     @Bind(R.id.txt_nav)
     TextView txt_nav;
     FloatingActionButton fab;
-    private ActionBarDrawerToggle mDrawerToggle;
+
 
 
     ParseUser currentUser = ParseUser.getCurrentUser();
@@ -183,10 +183,5 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
         return false;
     }
-
-
-
-
-
 
 }
