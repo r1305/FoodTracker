@@ -13,10 +13,15 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import org.json.JSONArray;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONValue;
+
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -46,38 +51,61 @@ public class GustosActivity extends AppCompatActivity {
 
 
 
+
         save_gustos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final ParseUser currentUser = ParseUser.getCurrentUser();
                 if (currentUser != null) {
-                    StringBuffer gustos=new StringBuffer();
+
+
+                    JSONArray l=new JSONArray();
                     if(hamb.isChecked()){
-                        gustos.append(hamb.getText().toString()+",");
 
-                    }else if(salchi.isChecked()){
-                        gustos.append(salchi.getText().toString()+",");
-                    }else if(pizza.isChecked()){
-                        gustos.append(pizza.getText().toString()+",");
-                    }else if(piqueo.isChecked()){
-                        gustos.append(piqueo.getText().toString()+",");
-                    }else if(criollo.isChecked()){
-                        gustos.append(criollo.getText().toString()+",");
-                    }else if(orga.isChecked()){
-                        gustos.append(orga.getText().toString()+",");
-                    }else if(carnes.isChecked()){
-                        gustos.append(carnes.getText().toString()+",");
-                    }else if(alitas.isChecked()) {
-                        gustos.append(alitas.getText().toString()+",");
-                    }else if(tacos.isChecked()){
-                        gustos.append(tacos.getText().toString()+",");
-                    }else{
-                        gustos.append(postres.getText().toString()+",");
+                        l.add(hamb.getText().toString());
+
                     }
+                    if(salchi.isChecked()){
+
+                        l.add(salchi.getText().toString());
+                    }
+                    if(pizza.isChecked()){
+
+                        l.add(pizza.getText().toString());
+                    }
+                    if(piqueo.isChecked()){
+
+                        l.add(piqueo.getText().toString());
+                    }
+                    if(criollo.isChecked()){
+
+                        l.add(criollo.getText().toString());
+                    }
+                    if(orga.isChecked()){
+
+                        l.add(orga.getText().toString());
+                    }
+                    if(carnes.isChecked()){
+
+                        l.add(carnes.getText().toString());
+
+                    }
+                    if(alitas.isChecked()) {
+
+                        l.add(alitas.getText().toString());
+                    }
+                    if(tacos.isChecked()){
+
+                        l.add(tacos.getText().toString());
+                    }
+                    if(postres.isChecked()){
+
+                        l.add(postres.getText().toString());
+                    }
+                    System.out.println("*****************"+l+"*********************");
 
 
-
-                    currentUser.addAllUnique("gustos", Arrays.asList("Salchipapa","Hamburguesa"));
+                    currentUser.addAllUnique("gustos", l);
                     currentUser.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {

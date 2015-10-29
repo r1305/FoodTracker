@@ -86,9 +86,12 @@ public class DetailsFragment extends Fragment {
             public void done(ParseObject object, ParseException e) {
                 nombre.setText(object.getString("menu"));
                 promo.setText(object.getString("oferta"));
-                precio.setText("     S/." + object.getNumber("precio").toString());
+                precio.setText("\t\tS/." + object.getNumber("precio").toString());
 
                 JSONArray ing=object.getJSONArray("ingredientes");
+                System.out.println(ing);
+
+
 
                 for(int i=0;i<ing.length();i++){
                     try {
