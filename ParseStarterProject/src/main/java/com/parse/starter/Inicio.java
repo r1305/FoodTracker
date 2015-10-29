@@ -31,7 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static com.parse.starter.R.drawable.abc_ic_ab_back_mtrl_am_alpha;
 
 
-public class Inicio extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Inicio extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Bind(R.id.drawer_layout)
     DrawerLayout dl;
     @Bind(R.id.toolbar)
