@@ -35,6 +35,7 @@ public class TruckersRecyclerAdapter extends RecyclerView.Adapter<TruckersRecycl
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_truckers, parent, false));
     }
 
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         ParseObject po = list.get(position);
@@ -84,6 +85,7 @@ public class TruckersRecyclerAdapter extends RecyclerView.Adapter<TruckersRecycl
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
         }
     }
 

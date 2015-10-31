@@ -1,7 +1,9 @@
 package com.parse.starter;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import Utilities.BitmapToByteArray;
 import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,6 +38,8 @@ public class EditProfileActivity extends AppCompatActivity {
     FloatingActionButton fab;
     @Bind(R.id.toolbar_edit)
     Toolbar toolbar;
+
+
 
 
     @Override
@@ -60,9 +65,6 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         final ParseUser currentUser = ParseUser.getCurrentUser();
         //set values from current user
         if (currentUser != null) {
@@ -79,14 +81,14 @@ public class EditProfileActivity extends AppCompatActivity {
 
                         } else {
                             // something went wrong
-                            Toast t = Toast.makeText(EditProfileActivity.this, "No se pudo obtener la foto", Toast.LENGTH_LONG);
+                            Toast t = Toast.makeText(EditProfileActivity.this, "No se pudo obtener la foto", Toast.LENGTH_SHORT);
                             t.show();
 
                         }
                     }
                 });
             }catch(Exception e){
-                Toast t = Toast.makeText(EditProfileActivity.this, "No se pudo obtener la foto", Toast.LENGTH_LONG);
+                Toast t = Toast.makeText(EditProfileActivity.this, "No se pudo obtener la foto", Toast.LENGTH_SHORT);
                 t.show();
             }
 
@@ -97,9 +99,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         }
 
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
+         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentUser.setEmail(email.getText().toString());
@@ -111,14 +111,14 @@ public class EditProfileActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseException e) {
 
-                        Intent i=new Intent(EditProfileActivity.this,Inicio.class);
-                        startActivity(i);
+                    Intent i=new Intent(EditProfileActivity.this,Inicio.class);
+                    startActivity(i);
 
-                        Toast t= Toast.makeText(EditProfileActivity.this,"Edicion exitosa",Toast.LENGTH_LONG );
-                        t.show();
-                        EditProfileActivity.this.finish();
+                    Toast t= Toast.makeText(EditProfileActivity.this,"Edicion exitosa",Toast.LENGTH_SHORT );
+                    t.show();
+                    EditProfileActivity.this.finish();
 
-                        Utils.parseUser = null;
+                    Utils.parseUser = null;
 
                     }
                 });

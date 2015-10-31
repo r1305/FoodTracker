@@ -87,6 +87,7 @@ public class GustosFragment extends Fragment {
             public void onClick(View v) {
                 Intent i=new Intent(getActivity(),GustosActivity.class);
                 startActivity(i);
+                getActivity().finish();
             }
         });
 

@@ -140,50 +140,58 @@ public class RegisterActivity extends AppCompatActivity {
                         break;
                 }
                 final ParseFile foto = new ParseFile("foto.png", Utils.imageBuffer);
+
                 foto.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        Utils.parseUser.put("foto", foto);
-                        if (Utils.user.isFacebook()) {
-                            Utils.parseUser.saveInBackground(new SaveCallback() {
-                                @Override
-                                public void done(ParseException e) {
-                                    Utils.parseUser.signUpInBackground(new SignUpCallback() {
+                                          @Override
+                                          public void done(ParseException e) {
+                                              Utils.parseUser.put("foto", foto);
+                                              if (Utils.user.isFacebook()) {
+                                                  Utils.parseUser.saveInBackground(new SaveCallback() {
+                                                      @Override
+                                                      public void done(ParseException e) {
+                                                          Utils.parseUser.signUpInBackground(new SignUpCallback() {
 
-                                        @Override
-                                        public void done(ParseException e) {
-                                            Intent intent = new Intent(RegisterActivity.this, Inicio.class);
-                                            Toast t= Toast.makeText(RegisterActivity.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
-                                            t.show();
-                                            startActivity(intent);
-                                            RegisterActivity.this.finish();
-                                            Utils.parseUser = null;
+                                                              @Override
+                                                              public void done(ParseException e) {
+                                                                  Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                                  Toast t = Toast.makeText(RegisterActivity.this, "Registro correcto, para validar ingrese denuevo", Toast.LENGTH_LONG);
+                                                                  t.show();
+                                                                  startActivity(intent);
+                                                                  RegisterActivity.this.finish();
+                                                                  Utils.parseUser = null;
 
-                                        }
-                                    });
-                                }
-                            });
-                        } else {
-                            Utils.parseUser.signUpInBackground(new SignUpCallback() {
+                                                              }
+                                                          });
+                                                      }
+                                                  });
+                                              } else {
+                                                  Utils.parseUser.saveInBackground(new SaveCallback() {
+                                                      @Override
+                                                      public void done(ParseException e) {
+                                                          Utils.parseUser.signUpInBackground(new SignUpCallback() {
 
-                                @Override
-                                public void done(ParseException e) {
-                                    Intent intent = new Intent(RegisterActivity.this,Inicio.class);
-                                    Toast t= Toast.makeText(RegisterActivity.this,"Bienvenido "+name.getText().toString(),Toast.LENGTH_LONG );
-                                    t.show();
-                                    startActivity(intent);
-                                    RegisterActivity.this.finish();
-                                    Utils.parseUser = null;
+                                                              @Override
+                                                              public void done(ParseException e) {
+                                                                  Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                                  Toast t = Toast.makeText(RegisterActivity.this, "Registro correcto, para validar ingrese denuevo", Toast.LENGTH_LONG);
+                                                                  t.show();
+                                                                  startActivity(intent);
+                                                                  RegisterActivity.this.finish();
+                                                                  Utils.parseUser = null;
 
-                                }
-                            });
-                        }
-                    }
-                });
+                                                              }
+                                                          });
+                                                      }
+                                                  });
+                                              }
+                                          }
+                                      }
+
+                );
 
 
-            }
-        });
+                }
+            });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

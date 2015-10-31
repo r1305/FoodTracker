@@ -42,7 +42,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     CircleImageView img;
     @Bind(R.id.txt_nav)
     TextView txt_nav;
-    FloatingActionButton fab;
+
 
 
 
@@ -51,7 +51,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        fab=(FloatingActionButton)findViewById(R.id.fab);
+
 
         ButterKnife.bind(this);
 
@@ -67,11 +67,13 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
             @Override
             public void onClick(View view) {
                 dl.openDrawer(GravityCompat.START);
-                if(dl.isDrawerOpen(GravityCompat.START)){
+                if (dl.isDrawerOpen(GravityCompat.START)) {
                     dl.closeDrawers();
                 }
-                }
-            });
+            }
+        });
+
+
 
 
 
