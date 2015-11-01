@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.parse.starter" >
+    package="com.parse.starter">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,7 +13,7 @@
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="@string/parse_app_id" />
@@ -26,7 +26,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,16 +40,13 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/title_activity_register" >
-        </activity>
+            android:label="@string/title_activity_register"></activity>
         <activity
             android:name=".Inicio"
-            android:label="@string/title_activity_inicio" >
-        </activity>
+            android:label="@string/title_activity_inicio"></activity>
         <activity
             android:name=".GustosActivity"
-            android:label="@string/title_activity_gustos" >
-        </activity>
+            android:label="@string/title_activity_gustos"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -67,13 +64,11 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
-        </activity>
+            android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".EditProfileActivity"
             android:label="@string/title_activity_edit_profile"
-            android:theme="@style/AppTheme" >
-        </activity>
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

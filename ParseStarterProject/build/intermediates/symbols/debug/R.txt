@@ -811,7 +811,7 @@ int drawable tacos 0x7f0200c3
 int drawable truck 0x7f0200c4
 int drawable truck_map 0x7f0200c5
 int drawable trucker 0x7f0200c6
-int id FbLoginBtn 0x7f0d00ab
+int id FbLoginBtn 0x7f0d00aa
 int id FbLoginResultTxt 0x7f0d0099
 int id action0 0x7f0d00eb
 int id action_bar 0x7f0d0082
@@ -932,7 +932,7 @@ int id large 0x7f0d0060
 int id left 0x7f0d0022
 int id line1 0x7f0d00f0
 int id line3 0x7f0d00f4
-int id linearLayout 0x7f0d00aa
+int id linearLayout 0x7f0d00ab
 int id listMode 0x7f0d000c
 int id list_gustos 0x7f0d00cb
 int id list_item 0x7f0d0069

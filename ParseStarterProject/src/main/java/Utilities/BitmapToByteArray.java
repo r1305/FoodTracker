@@ -7,20 +7,22 @@ import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 
-public class BitmapToByteArray extends AsyncTask<Bitmap,Void,byte[]> {
-    public BitmapToByteArray(){
-        Log.d("LoadingImageBuffer","Start");
+public class BitmapToByteArray extends AsyncTask<Bitmap, Void, byte[]> {
+    public BitmapToByteArray() {
+        Log.d("LoadingImageBuffer", "Start");
     }
-    protected byte[] doInBackground(Bitmap... source){
+
+    protected byte[] doInBackground(Bitmap... source) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         source[0].compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }
+
     protected void onPostExecute(byte[] result) {
         Utils.imageBuffer = result;
         Utils.bufferingImage = false;
-        Log.d("LoadingImageBuffer","Ready");
+        Log.d("LoadingImageBuffer", "Ready");
     }
 
 }

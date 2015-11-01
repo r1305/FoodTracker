@@ -6,19 +6,21 @@
     android:background="#FFFFFF">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#00BCD5">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#00BCD5">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mis Gustos"
-                android:gravity="center"
-                android:textSize="35dp"
-                android:background="#00BCD5"/>
-        </LinearLayout>
+            android:text="Mis Gustos"
+            android:gravity="center"
+            android:textSize="35dp"
+            android:background="#00BCD5" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,19 +28,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hamburguesas"
             android:textSize="25dp"
-            android:id="@+id/hamburguesas"
-            />
+            android:id="@+id/hamburguesas" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/hamburger"
-            android:layout_marginLeft="110dp"/>
+            android:layout_marginLeft="110dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,18 +50,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Salchipapas"
             android:textSize="25dp"
-            android:id="@+id/salchipapas"/>
+            android:id="@+id/salchipapas" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/salchi"
-            android:layout_marginLeft="150dp"/>
+            android:layout_marginLeft="150dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,18 +72,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pizza"
             android:textSize="25dp"
-            android:id="@+id/pizza"/>
+            android:id="@+id/pizza" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/pizza"
-            android:layout_marginLeft="220dp"/>
+            android:layout_marginLeft="220dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,18 +94,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Piqueo Marino"
             android:textSize="25dp"
-            android:id="@+id/piqueoM"/>
+            android:id="@+id/piqueoM" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/marino"
-            android:layout_marginLeft="120dp"/>
+            android:layout_marginLeft="120dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,18 +116,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Criollo"
             android:textSize="25dp"
-            android:id="@+id/criollo"/>
+            android:id="@+id/criollo" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/criollo"
-            android:layout_marginLeft="210dp"/>
+            android:layout_marginLeft="210dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -122,18 +138,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Organico"
             android:textSize="25dp"
-            android:id="@+id/organico"/>
+            android:id="@+id/organico" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/organico"
-            android:layout_marginLeft="180dp"/>
+            android:layout_marginLeft="180dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -141,19 +160,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Carnes"
             android:textSize="25dp"
-            android:id="@+id/carnes"
-            />
+            android:id="@+id/carnes" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/carnes"
-            android:layout_marginLeft="205dp"/>
+            android:layout_marginLeft="205dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -161,18 +182,21 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Alitas"
             android:textSize="25dp"
-            android:id="@+id/alitas"/>
+            android:id="@+id/alitas" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/alitas"
-            android:layout_marginLeft="218dp"/>
+            android:layout_marginLeft="218dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -180,19 +204,22 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tacos y Enchiladas"
             android:layout_gravity="left"
             android:textSize="25dp"
-            android:id="@+id/tacos"/>
+            android:id="@+id/tacos" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/tacos"
-            android:layout_marginLeft="70dp"/>
+            android:layout_marginLeft="70dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -200,31 +227,33 @@
         android:gravity="left"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp">
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Postres"
             android:layout_gravity="left"
             android:textSize="25dp"
-            android:id="@+id/postres"/>
+            android:id="@+id/postres" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/postres"
-            android:layout_marginLeft="200dp"/>
+            android:layout_marginLeft="200dp" />
 
     </LinearLayout>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="#00BCD5"
-            android:text="Guardar"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:layout_marginTop="15sp"
-            android:id="@+id/btn_gustos"
-            android:layout_gravity="center_vertical"
-            />
 
-    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#00BCD5"
+        android:text="Guardar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_marginTop="15sp"
+        android:id="@+id/btn_gustos"
+        android:layout_gravity="center_vertical" />
+
+</LinearLayout>

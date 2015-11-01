@@ -12,31 +12,29 @@
         android:layout_marginTop="15dp"
         android:src="@drawable/logo"
         android:layout_above="@+id/frase"
-        android:paddingBottom="15dp"/>
+        android:paddingBottom="15dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Encuentra los mejores foodtrucks en Lima"
         android:id="@+id/frase"
         android:textSize="25dp"
-        android:gravity="center_horizontal"
-        />
-
+        android:gravity="center_horizontal" />
 
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="40sp"
+        android:layout_height="45sp"
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/login_email"
-        android:hint="Username"
+        android:hint="Usuario"
         android:layout_marginTop="15dp"
-        android:layout_above="@+id/login_password"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:background="#FFFFFF"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -47,10 +45,9 @@
         android:ems="10"
         android:id="@+id/login_password"
         android:hint="**********"
-        android:layout_above="@+id/linearLayout"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -73,7 +70,7 @@
             android:textColor="#ffffff"
             android:background="#3885e7"
             android:elevation="17sp"
-            android:layout_marginBottom="10sp"/>
+            android:layout_marginBottom="10sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -95,12 +92,12 @@
 
     <ImageButton
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:src="@drawable/fb"
         android:background="#00BCD5"
         android:id="@+id/FbLoginBtn"
         android:layout_marginTop="15dp"
-        />
+        android:layout_gravity="center_vertical" />
 
 </LinearLayout>
 <!-- From: file:/C:/Users/Rogger/Documents/SW2/FoodTrucker/ParseStarterProject/src/main/res/layout/activity_main.xml -->

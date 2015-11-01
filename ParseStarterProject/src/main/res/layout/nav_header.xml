@@ -8,16 +8,15 @@
     android:orientation="vertical"
     android:gravity="bottom">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="100dp"
         android:layout_height="120dp"
         android:src="@mipmap/ic_profile"
         app:border_width="2dp"
         app:border_color="#ffffff"
-        android:layout_gravity="center_horizontal"
-        />
+        android:layout_gravity="center_horizontal" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,8 +24,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:id="@+id/txt_nav"
-        android:gravity="center"/>
-
+        android:gravity="center" />
 
 
 </LinearLayout>

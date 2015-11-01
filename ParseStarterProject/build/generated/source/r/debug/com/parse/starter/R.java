@@ -3000,7 +3000,7 @@ containing a value of this type.
         public static final int trucker=0x7f0200c6;
     }
     public static final class id {
-        public static final int FbLoginBtn=0x7f0d00ab;
+        public static final int FbLoginBtn=0x7f0d00aa;
         public static final int FbLoginResultTxt=0x7f0d0099;
         public static final int action0=0x7f0d00eb;
         public static final int action_bar=0x7f0d0082;
@@ -3121,7 +3121,7 @@ containing a value of this type.
         public static final int left=0x7f0d0022;
         public static final int line1=0x7f0d00f0;
         public static final int line3=0x7f0d00f4;
-        public static final int linearLayout=0x7f0d00aa;
+        public static final int linearLayout=0x7f0d00ab;
         public static final int listMode=0x7f0d000c;
         public static final int list_gustos=0x7f0d00cb;
         public static final int list_item=0x7f0d0069;
