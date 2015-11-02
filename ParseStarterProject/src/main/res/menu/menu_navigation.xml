@@ -5,7 +5,13 @@
     <item
         android:id="@+id/trucker"
         android:icon="@drawable/car"
-        android:title="Food Truckers"
+        android:title="FoodTruckers"
+        app:rippleColor="#00BCD5" />
+
+    <item
+        android:id="@+id/coupons"
+        android:icon="@drawable/coupons"
+        android:title="Cupones"
         app:rippleColor="#00BCD5" />
 
     <item

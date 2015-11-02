@@ -131,6 +131,7 @@
     <orderEntry type="library" exported="" name="parse-android-1.10.1" level="project" />
     <orderEntry type="library" exported="" name="ParseFacebookUtilsV4-1.10.1" level="project" />
     <orderEntry type="library" exported="" name="1_ParseFacebookUtilsV4-1.10.1" level="project" />
+    <orderEntry type="library" exported="" name="2_ParseFacebookUtilsV4-1.10.1" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-drive-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-8.1.0" level="project" />
@@ -145,6 +146,7 @@
     <orderEntry type="library" exported="" name="play-services-ads-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="1_json-simple-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-appstate-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-gcm-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="design-23.0.1" level="project" />

@@ -180,6 +180,11 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 Inicio.this.finish();
                 return true;
 
+            case R.id.coupons:
+
+                Toast.makeText(Inicio.this,"Cupones",Toast.LENGTH_LONG);
+                dl.closeDrawers();
+
 
         }
 
