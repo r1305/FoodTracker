@@ -38,7 +38,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     Toolbar toolbar;
     @Bind(R.id.navigation)
     NavigationView nav;
-    @Bind(R.id.profile_image)
+    @Bind(R.id.profile)
     CircleImageView img;
     @Bind(R.id.txt_nav)
     TextView txt_nav;
