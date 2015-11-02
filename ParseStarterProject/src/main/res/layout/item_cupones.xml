@@ -18,7 +18,7 @@
         android:background="#ffd700">
 
         <ImageView
-            android:id="@+id/image_menu"
+            android:id="@+id/image_cupones"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
@@ -34,14 +34,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title_menu"
+                android:id="@+id/title_cupon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/precio"
+                android:id="@+id/descuento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
