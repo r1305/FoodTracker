@@ -182,8 +182,15 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
             case R.id.coupons:
 
-                Toast.makeText(Inicio.this,"Cupones",Toast.LENGTH_LONG);
+
+                Fragment cupones =
+                        CuponesFragment.newInstance();
+
+                ft.replace(R.id.flaContenido, cupones);
+                toolbar.setTitle("Cupones");
+                ft.commit();
                 dl.closeDrawers();
+                return true;
 
 
         }
