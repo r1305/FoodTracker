@@ -31,12 +31,34 @@ public class CuponesRecyclerAdapter  extends RecyclerView.Adapter<CuponesRecycle
 
     @Override
     public void onBindViewHolder(CuponesRecyclerAdapter.ViewHolder holder, int position) {
+        
+        ParseObject po = list.get(position);
+        holder.title.setText(po.getString("Truck"));
+        holder.desc.setText(po.getString("Descuento"));
+        ParseFile applicantResume = (ParseFile)po.get("foto");
+
+            applicantResume.getDataInBackground(new GetDataCallback() {
+                public void done(byte[] data, ParseException e) {
+                    if (e == null) {
+
+                        holder.image.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+
+                    } else {
+                        // something went wrong
+
+                    }
+                }
+            });
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        if(list==null){
+            return 0;
+        }else {
+            return list.size();
+        };
     }
 
 
