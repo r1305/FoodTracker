@@ -16,11 +16,10 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            android:layout_height="110dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/trucker" />
+            android:src="@drawable/trucker"
+            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"

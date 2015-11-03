@@ -1,11 +1,16 @@
 package com.parse.starter;
 
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 import java.util.ArrayList;
@@ -21,16 +26,16 @@ public class CuponesRecyclerAdapter  extends RecyclerView.Adapter<CuponesRecycle
 
     List<ParseObject> list=new ArrayList<>();
 
-    View.OnClickListener listener;
+    public CuponesRecyclerAdapter(List<ParseObject> list){this.list=list;}
 
 
     @Override
     public CuponesRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cupones, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(CuponesRecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final CuponesRecyclerAdapter.ViewHolder holder, int position) {
         
         ParseObject po = list.get(position);
         holder.title.setText(po.getString("Truck"));
@@ -58,7 +63,7 @@ public class CuponesRecyclerAdapter  extends RecyclerView.Adapter<CuponesRecycle
             return 0;
         }else {
             return list.size();
-        };
+        }
     }
 
 
