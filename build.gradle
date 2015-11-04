@@ -11,6 +11,7 @@ buildscript {
 allprojects {
     repositories {
         mavenCentral()
+
     }
 }
 
@@ -19,5 +20,5 @@ ext {
     buildToolsVersion = "23.0.1"
 
     minSdkVersion = 9
-    targetSdkVersion = 22
+    targetSdkVersion = 23
 }
