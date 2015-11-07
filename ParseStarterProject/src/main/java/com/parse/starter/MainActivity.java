@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
       });
 
-      ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
       FbLoginBtn.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {

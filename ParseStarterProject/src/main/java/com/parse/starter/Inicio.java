@@ -43,16 +43,11 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     @Bind(R.id.txt_nav)
     TextView txt_nav;
 
-
-
-
     ParseUser currentUser = ParseUser.getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-
-
         ButterKnife.bind(this);
 
         toolbar.setNavigationIcon(R.drawable.menu);
@@ -61,8 +56,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.animate();
-
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,10 +65,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 }
             }
         });
-
-
-
-
 
         if (currentUser != null) {
             txt_nav.setText(currentUser.getString("name"));
@@ -107,13 +96,9 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 }
             });
 
-
-
         } else {
-            // show the signup or login screen
 
         }
-
 
         Fragment frag1 = ListTruckersFragment.newInstance();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -131,8 +116,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         switch(menuItem.getItemId()){
             case R.id.perfil:
-                Fragment perfil =
-                        PerfilFragment.newInstance();
+                Fragment perfil =PerfilFragment.newInstance();
 
                 ft.replace(R.id.flaContenido, perfil);
                 toolbar.setTitle("Perfil");
@@ -140,8 +124,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 dl.closeDrawers();
                 return true;
             case R.id.gustos:
-                Fragment secondFragment =
-                        GustosFragment.newInstance();
+                Fragment secondFragment =GustosFragment.newInstance();
 
                 ft.replace(R.id.flaContenido, secondFragment);
                 toolbar.setTitle("Gustos");
@@ -150,8 +133,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                 return true;
             case R.id.trucker:
 
-                Fragment listado =
-                        ListTruckersFragment.newInstance();
+                Fragment listado =ListTruckersFragment.newInstance();
 
                 ft.replace(R.id.flaContenido, listado);
                 toolbar.setTitle("Truckers");
@@ -174,7 +156,6 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
             case R.id.fab:
 
-
                 i=new Intent(Inicio.this,EditProfileActivity.class);
                 startActivity(i);
                 Inicio.this.finish();
@@ -182,9 +163,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
             case R.id.coupons:
 
-
-                Fragment cupones =
-                        CuponesFragment.newInstance();
+                Fragment cupones =CuponesFragment.newInstance();
 
                 ft.replace(R.id.flaContenido, cupones);
                 toolbar.setTitle("Cupones");

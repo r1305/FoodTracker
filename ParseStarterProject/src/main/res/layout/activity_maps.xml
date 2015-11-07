@@ -1,39 +1,46 @@
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/dl_maps"
-
-    android:background="#00BCD5">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#FFFFFF">
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_maps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00BCD5"
-
-            >
+            android:background="#00BCD5">
 
         </android.support.v7.widget.Toolbar>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_buscar"
+                android:text="Buscar"/>
 
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/direccion"
+                android:inputType="textAutoComplete"/>
+
+        </LinearLayout>
+        <fragment
+            xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/map"
             tools:context="com.parse.starter.MapsActivity"
-            android:name="com.google.android.gms.maps.SupportMapFragment" />
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            tools:layout="@layout/activity_maps" />
 
 
     </LinearLayout>
-
-
-</android.support.v4.widget.DrawerLayout>
 

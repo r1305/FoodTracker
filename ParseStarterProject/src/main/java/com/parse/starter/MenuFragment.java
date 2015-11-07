@@ -8,9 +8,14 @@ import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,12 +42,15 @@ public class MenuFragment extends Fragment{
     @Bind(R.id.nombre)
     TextView nombre;
 
+    MenuRecyclerAdapter adapter;
+
     public static MenuFragment newInstance(String objectId){
         MenuFragment fragment = new MenuFragment();
         Bundle b=new Bundle();
         b.putString("id", objectId);
         fragment.setArguments(b);
         return fragment;
+
     }
 
     public MenuFragment() {
@@ -65,8 +73,8 @@ public class MenuFragment extends Fragment{
             public void done(ParseObject object, ParseException e) {
                 nombre.setText(object.getString("name"));
 
-                }
-            });
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,11 +86,9 @@ public class MenuFragment extends Fragment{
             }
         });
 
-        recyclerView=(RecyclerView)rootView.findViewById(R.id.recycler_view_menu);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-
-
 
         return rootView;
     }
@@ -97,7 +103,7 @@ public class MenuFragment extends Fragment{
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
-                MenuRecyclerAdapter adapter = new MenuRecyclerAdapter(objects);
+                 adapter= new MenuRecyclerAdapter(objects);
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -116,4 +122,4 @@ public class MenuFragment extends Fragment{
     }
 
 
-}
+   }

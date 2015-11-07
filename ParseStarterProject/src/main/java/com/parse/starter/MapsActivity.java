@@ -1,17 +1,17 @@
 package com.parse.starter;
 
+import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.GestureDetector;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,8 +21,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -38,6 +36,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     @Bind(R.id.toolbar_maps)
     Toolbar toolbar;
+    LatLng total;
+    @Bind(R.id.btn_buscar)
+    Button buscar;
+    @Bind(R.id.direccion)
+    EditText direccion;
+
 
 
 
@@ -68,13 +72,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+        buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                total=getLocationFromAddress(getBaseContext(),direccion.getText().toString());
+                Toast.makeText(MapsActivity.this,"Latitud: "+total.latitude + ", Longitud: " +total.longitude,Toast.LENGTH_LONG).show();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(total, 18));
+                mMap.addMarker(new MarkerOptions().position(total));
+
+            }
+        });
+
+
+
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        LatLng total = new LatLng(-12.084756,-76.9730044);
+        total = new LatLng(-12.084756,-76.9730044);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Truckers");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -100,9 +117,36 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         u.setZoomControlsEnabled(true);
 
     }
+
+
     @Override
     public void onBackPressed(){
         MapsActivity.this.finish();
+    }
+
+    public LatLng getLocationFromAddress(Context context,String strAddress) {
+
+        Geocoder coder = new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new LatLng(location.getLatitude(), location.getLongitude() );
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+
+        return p1;
     }
 
 
