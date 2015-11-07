@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       ButterKnife.bind(this);
+      email.setSelected(false);
+
+      psw.setSelected(false);
+
 
       registrar.setOnClickListener(new View.OnClickListener() {
           @Override

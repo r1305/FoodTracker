@@ -79,6 +79,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(MapsActivity.this,"Latitud: "+total.latitude + ", Longitud: " +total.longitude,Toast.LENGTH_LONG).show();
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(total, 18));
                 mMap.addMarker(new MarkerOptions().position(total));
+                direccion.getText().clear();
+                direccion.clearFocus();
 
             }
         });
