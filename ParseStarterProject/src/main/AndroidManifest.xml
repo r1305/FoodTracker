@@ -42,7 +42,7 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"></activity>
         <activity
-            android:name=".Inicio"
+            android:name=".InicioActivity"
             android:label="@string/title_activity_inicio"></activity>
         <activity
             android:name=".GustosActivity"

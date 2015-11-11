@@ -14,7 +14,7 @@ public class BitmapToByteArray extends AsyncTask<Bitmap, Void, byte[]> {
 
     protected byte[] doInBackground(Bitmap... source) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        source[0].compress(Bitmap.CompressFormat.PNG, 100, stream);
+        source[0].compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }

@@ -243,7 +243,7 @@ ADDED from AndroidManifest.xml:41:9
 		ADDED from AndroidManifest.xml:43:13
 	android:name
 		ADDED from AndroidManifest.xml:42:13
-activity#com.parse.starter.Inicio
+activity#com.parse.starter.InicioActivity
 ADDED from AndroidManifest.xml:44:9
 	android:label
 		ADDED from AndroidManifest.xml:46:13

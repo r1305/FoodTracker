@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
               ParseUser.logInInBackground(username, pass, new LogInCallback() {
                   public void done(ParseUser user, ParseException e) {
                       if (user != null) {
-                          Intent intent = new Intent(MainActivity.this, Inicio.class);
+                          Intent intent = new Intent(MainActivity.this, InicioActivity.class);
                           startActivity(intent);
 
                       } else {
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                               Log.d("MyApp", "User logged in through Facebook!");
 
 
-                              Intent intent = new Intent(MainActivity.this, Inicio.class);
+                              Intent intent = new Intent(MainActivity.this, InicioActivity.class);
                               startActivity(intent);
                               Utils.user.setFacebook(true);
                               MainActivity.this.finish();

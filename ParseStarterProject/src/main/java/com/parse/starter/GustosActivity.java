@@ -16,8 +16,6 @@ import com.parse.SaveCallback;
 import org.json.simple.JSONArray;
 
 
-import java.util.Arrays;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -106,7 +104,7 @@ public class GustosActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             Toast t = Toast.makeText(GustosActivity.this, "Gustos registrado", Toast.LENGTH_LONG);
                             t.show();
-                            Intent i = new Intent(GustosActivity.this, Inicio.class);
+                            Intent i = new Intent(GustosActivity.this, InicioActivity.class);
                             startActivity(i);
                             GustosActivity.this.finish();
                         }

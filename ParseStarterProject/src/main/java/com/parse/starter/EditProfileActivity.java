@@ -1,9 +1,7 @@
 package com.parse.starter;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +17,6 @@ import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import Utilities.BitmapToByteArray;
 import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,7 +55,7 @@ public class EditProfileActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(EditProfileActivity.this, Inicio.class);
+                Intent i = new Intent(EditProfileActivity.this, InicioActivity.class);
                 startActivity(i);
                 EditProfileActivity.this.finish();
 
@@ -111,7 +108,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseException e) {
 
-                    Intent i=new Intent(EditProfileActivity.this,Inicio.class);
+                    Intent i=new Intent(EditProfileActivity.this,InicioActivity.class);
                     startActivity(i);
 
                     Toast t= Toast.makeText(EditProfileActivity.this,"Edicion exitosa",Toast.LENGTH_SHORT );

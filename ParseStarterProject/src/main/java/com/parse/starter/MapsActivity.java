@@ -65,7 +65,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MapsActivity.this, Inicio.class);
+                Intent i = new Intent(MapsActivity.this, InicioActivity.class);
                 startActivity(i);
                 MapsActivity.this.finish();
 
@@ -129,6 +129,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public LatLng getLocationFromAddress(Context context,String strAddress) {
 
         Geocoder coder = new Geocoder(context);
+
         List<Address> address;
         LatLng p1 = null;
 

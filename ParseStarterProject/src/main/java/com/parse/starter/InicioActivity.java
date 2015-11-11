@@ -3,15 +3,11 @@ package com.parse.starter;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -28,10 +24,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.parse.starter.R.drawable.abc_ic_ab_back_mtrl_am_alpha;
 
-
-public class Inicio extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class InicioActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Bind(R.id.drawer_layout)
     DrawerLayout dl;
     @Bind(R.id.toolbar)
@@ -90,7 +84,7 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                     } else {
                         // something went wrong
 
-                        Toast t= Toast.makeText(Inicio.this,e.toString(),Toast.LENGTH_LONG);
+                        Toast t= Toast.makeText(InicioActivity.this,e.toString(),Toast.LENGTH_LONG);
                         t.show();
                     }
                 }
@@ -143,22 +137,22 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
             case R.id.logout:
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 currentUser.logOut();
-                Intent i=new Intent(Inicio.this,MainActivity.class);
+                Intent i=new Intent(InicioActivity.this,MainActivity.class);
                 startActivity(i);
-                Inicio.this.finish();
+                InicioActivity.this.finish();
                 return true;
             case R.id.maps:
 
-                i=new Intent(Inicio.this,MapsActivity.class);
+                i=new Intent(InicioActivity.this,MapsActivity.class);
                 startActivity(i);
-                Inicio.this.finish();
+                InicioActivity.this.finish();
                 return true;
 
             case R.id.fab:
 
-                i=new Intent(Inicio.this,EditProfileActivity.class);
+                i=new Intent(InicioActivity.this,EditProfileActivity.class);
                 startActivity(i);
-                Inicio.this.finish();
+                InicioActivity.this.finish();
                 return true;
 
             case R.id.coupons:
