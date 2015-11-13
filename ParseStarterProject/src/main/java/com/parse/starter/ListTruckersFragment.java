@@ -13,8 +13,13 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -26,6 +31,10 @@ public class ListTruckersFragment extends Fragment {
     RecyclerView recyclerView;
 
     ParseQuery<ParseObject> query= ParseQuery.getQuery("Truckers");
+    ParseUser u=ParseUser.getCurrentUser();
+    JSONArray g=u.getJSONArray("gustos");
+    String[] gus=new String[g.length()];
+
     ParseObject po;
     TruckersRecyclerAdapter adapter;
     List<ParseObject> list=new ArrayList<>();
@@ -50,15 +59,49 @@ public class ListTruckersFragment extends Fragment {
         ButterKnife.bind(this, rootView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-        //el time out no me deja mostrar los truckers
-
-
         adapter= new TruckersRecyclerAdapter(list);
         recyclerView.setAdapter(adapter);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
+
+        for (int i=0;i<g.length();i++){
+            try {
+                gus[i]=g.get(i).toString();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(gus.length!=0) {
+
+            query.whereContainedIn("tipo", Arrays.asList(gus));
+
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+
+                    for (ParseObject object : objects) {
+                        list.add(object);
+                    }
+
+                    adapter.notifyDataSetChanged();
+                    adapter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            po = (ParseObject) view.getTag();//primer cambio
+
+                            FragmentTransaction ft = getFragmentManager().beginTransaction();
+                            Fragment menu = MenuFragment.newInstance(po.getObjectId());
+                            ft.replace(R.id.flaContenido, menu);
+                            ft.commit();
+
+                        }
+                    });
+                }
+            });
+        }else{
+
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
 
 
                     for (ParseObject object : objects) {
@@ -78,8 +121,10 @@ public class ListTruckersFragment extends Fragment {
 
                         }
                     });
-            }
-        });
+                }
+            });
+
+        }
 
 
         return rootView;

@@ -54,30 +54,26 @@ public class GustosFragment extends Fragment {
         View root=inflater.inflate(R.layout.fragment_gustos, container, false);
         ButterKnife.bind(this,root);
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("menu");
+
         ParseUser currentUser=ParseUser.getCurrentUser();
 
+        JSONArray ing = currentUser.getJSONArray("gustos");
 
-
-
-                JSONArray ing = currentUser.getJSONArray("gustos");
-                System.out.println(ing);
-
-                if(ing!=null) {
-                    for (int i = 0; i < ing.length(); i++) {
-                        try {
-                            System.out.println(ing.get(i).toString());
-                            listItems.add(ing.get(i).toString());
-                        } catch (JSONException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                    adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listItems);
-
-                    gustos.setAdapter(adapter);
-                }else{
-                    Toast.makeText(getActivity(),"Aun no ha registrado sus gustos",Toast.LENGTH_LONG).show();
+        if(ing!=null) {
+            for (int i = 0; i < ing.length(); i++) {
+                try {
+                    System.out.println(ing.get(i).toString());
+                    listItems.add(ing.get(i).toString());
+                } catch (JSONException e1) {
+                    e1.printStackTrace();
                 }
+            }
+            adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listItems);
+
+            gustos.setAdapter(adapter);
+        }else{
+            Toast.makeText(getActivity(),"Aun no ha registrado sus gustos",Toast.LENGTH_LONG).show();
+        }
 
 
 

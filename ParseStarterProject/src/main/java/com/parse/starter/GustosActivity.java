@@ -94,9 +94,6 @@ public class GustosActivity extends AppCompatActivity {
 
                         l.add(postres.getText().toString());
                     }
-                    System.out.println("*****************" + l + "*********************");
-
-
                     currentUser.remove("gustos");
                     currentUser.addAllUnique("gustos",l);
                     currentUser.saveInBackground(new SaveCallback() {
