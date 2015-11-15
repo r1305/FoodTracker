@@ -43,8 +43,6 @@ public class EditProfileActivity extends AppCompatActivity {
     int PICK_IMAGE=2000;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +78,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         final ParseUser currentUser = ParseUser.getCurrentUser();
-        //set values from current user
 
         if (currentUser != null) {
             name.setText(currentUser.getString("name"));
