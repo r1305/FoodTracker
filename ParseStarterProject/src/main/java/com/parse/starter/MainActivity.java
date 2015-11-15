@@ -1,6 +1,8 @@
 package com.parse.starter;
 
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
+import android.content.pm.PackageInstaller.Session;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,9 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseSession;
 import com.parse.ParseUser;
 
 import java.util.Arrays;
@@ -37,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       ButterKnife.bind(this);
-      email.setSelected(false);
 
-      psw.setSelected(false);
 
 
       registrar.setOnClickListener(new View.OnClickListener() {
@@ -125,19 +127,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
     }
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.menu_main, menu);
-    return true;
-  }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    int id = item.getItemId();
-    if (id == R.id.action_settings) {
-      return true;
-    }
 
-    return super.onOptionsItemSelected(item);
-  }
 }

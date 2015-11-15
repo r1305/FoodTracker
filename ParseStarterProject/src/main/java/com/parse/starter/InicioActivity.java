@@ -4,10 +4,12 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -15,6 +17,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.heinrichreimersoftware.materialdrawer.DrawerActivity;
+import com.heinrichreimersoftware.materialdrawer.DrawerView;
+import com.heinrichreimersoftware.materialdrawer.structure.DrawerProfile;
+import com.heinrichreimersoftware.materialdrawer.theme.DrawerTheme;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -24,8 +30,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.parse.starter.R.string.md_content_description_drawer_open;
 
-public class InicioActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+public class InicioActivity extends DrawerActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Bind(R.id.drawer_layout)
     DrawerLayout dl;
     @Bind(R.id.toolbar)
@@ -37,6 +45,9 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
     @Bind(R.id.txt_nav)
     TextView txt_nav;
 
+
+
+
     ParseUser currentUser = ParseUser.getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +55,15 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
         setContentView(R.layout.activity_inicio);
         ButterKnife.bind(this);
 
+
         toolbar.setNavigationIcon(R.drawable.menu);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+
+
         toolbar.animate();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,5 +185,6 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
 
         return false;
     }
+
 
 }

@@ -307,4 +307,24 @@
     </style>
     <style name="Platform.ThemeOverlay.AppCompat.Dark"/>
     <style name="Platform.ThemeOverlay.AppCompat.Light"/>
+    <!-- From: file:/C:/Users/Rogger/Documents/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.heinrichreimersoftware/material-drawer/2.2.0/res/values-v21/values-v21.xml -->
+    <eat-comment/>
+    <style name="Theme.MaterialDrawer.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+    <style name="Theme.MaterialDrawer.Dark.LightToolbar" parent="Theme.MaterialDrawer.Dark">
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+    </style>
+    <style name="Theme.MaterialDrawer.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+    </style>
+    <style name="Theme.MaterialDrawer.Light.DarkToolbar" parent="Theme.MaterialDrawer.Light">
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
 </resources>

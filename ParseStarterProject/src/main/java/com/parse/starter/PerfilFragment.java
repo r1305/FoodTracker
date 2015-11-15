@@ -3,9 +3,11 @@ package com.parse.starter;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,6 +35,19 @@ public class PerfilFragment extends Fragment {
     @Bind(R.id.user_perfil)
     TextView user;
 
+    PointF start = new  PointF();
+    public static PointF mid = new PointF();
+
+    // We can be in one of these 3 states
+    public static final int NONE = 0;
+    public static final int DRAG = 1;
+    public static final int ZOOM = 2;
+    public static int mode = NONE;
+
+    float oldDist;
+
+    private float[] matrixValues = new float[9];
+
 
 
 
@@ -41,6 +56,8 @@ public class PerfilFragment extends Fragment {
         PerfilFragment fragment=new PerfilFragment();
         return fragment;
     }
+
+
 
     public PerfilFragment() {
         // Required empty public constructor
@@ -61,12 +78,13 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(getActivity(),EditProfileActivity.class);
+                Intent i = new Intent(getActivity(), EditProfileActivity.class);
                 startActivity(i);
                 getActivity().finish();
 
             }
         });
+
 
 
         if (currentUser != null) {
@@ -109,6 +127,8 @@ public class PerfilFragment extends Fragment {
 
 
     }
+
+
 
 
 }

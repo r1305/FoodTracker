@@ -1,7 +1,10 @@
 package com.parse.starter;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +20,7 @@ import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import Utilities.BitmapToByteArray;
 import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,6 +40,8 @@ public class EditProfileActivity extends AppCompatActivity {
     @Bind(R.id.toolbar_edit)
     Toolbar toolbar;
 
+    int PICK_IMAGE=2000;
+
 
 
 
@@ -44,6 +50,9 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         ButterKnife.bind(this);
+
+        final Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+        new BitmapToByteArray().execute(bitmap);
 
         setSupportActionBar(toolbar);
 
@@ -61,9 +70,18 @@ public class EditProfileActivity extends AppCompatActivity {
 
             }
         });
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
+
 
         final ParseUser currentUser = ParseUser.getCurrentUser();
         //set values from current user
+
         if (currentUser != null) {
             name.setText(currentUser.getString("name"));
             email.setText(currentUser.getEmail());
@@ -99,28 +117,54 @@ public class EditProfileActivity extends AppCompatActivity {
          fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentUser.setEmail(email.getText().toString());
-                currentUser.put("name", name.getText().toString());
-                currentUser.setUsername(user.getText().toString());
-
-                currentUser.saveInBackground(new SaveCallback() {
-
+                final ParseFile foto = new ParseFile("foto.png", Utils.imageBuffer);
+                foto.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
+                        currentUser.put("foto", foto);
+                        currentUser.setEmail(email.getText().toString());
+                        currentUser.put("name", name.getText().toString());
+                        currentUser.setUsername(user.getText().toString());
 
-                    Intent i=new Intent(EditProfileActivity.this,InicioActivity.class);
-                    startActivity(i);
+                        currentUser.saveInBackground(new SaveCallback() {
 
-                    Toast t= Toast.makeText(EditProfileActivity.this,"Edicion exitosa",Toast.LENGTH_SHORT );
-                    t.show();
-                    EditProfileActivity.this.finish();
+                            @Override
+                            public void done(ParseException e) {
 
-                    Utils.parseUser = null;
+                                Intent i = new Intent(EditProfileActivity.this, InicioActivity.class);
+                                startActivity(i);
 
+                                Toast t = Toast.makeText(EditProfileActivity.this, "Edicion exitosa", Toast.LENGTH_SHORT);
+                                t.show();
+                                EditProfileActivity.this.finish();
+
+                                Utils.parseUser = null;
+
+                            }
+                        });
                     }
                 });
+
             }
         });
+    }
+
+    private void openGallery() {
+        Intent gallery =
+                new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+            Uri imageUri = data.getData();
+            img.setImageURI(imageUri);
+            Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+            new BitmapToByteArray().execute(bitmap);
+        }
     }
 
 }

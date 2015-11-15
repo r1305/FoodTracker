@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Bind(R.id.passwordTxt)EditText psw;
     @Bind(R.id.sexGroup)RadioGroup sex;
     @Bind(R.id.profile_image) ImageView profile_image;
+    @Bind(R.id.progressBar)ProgressBar progressBar;
     private static final int PICK_IMAGE = 2000;
 
     private void getFbData() {
@@ -119,6 +121,9 @@ public class RegisterActivity extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                progressBar.setProgress(100);
+
 
                 String pass = psw.getText().toString();
                 if (Utils.parseUser == null) {

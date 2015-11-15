@@ -47,6 +47,8 @@ public class CuponesFragment extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_cupones, container, false);
@@ -85,5 +87,7 @@ public class CuponesFragment extends Fragment {
 
         return rootView;
     }
+
+
     
 }
