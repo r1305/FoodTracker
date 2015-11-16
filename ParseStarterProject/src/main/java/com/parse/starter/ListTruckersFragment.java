@@ -3,6 +3,7 @@ package com.parse.starter;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,8 @@ public class ListTruckersFragment extends Fragment {
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
+    @Bind(R.id.fab_list)
+    FloatingActionButton fabList;
 
     ParseQuery<ParseObject> query= ParseQuery.getQuery("Truckers");
     ParseUser u=ParseUser.getCurrentUser();
@@ -56,8 +59,52 @@ public class ListTruckersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_listtruckers, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_listtruckers, container, false);
         ButterKnife.bind(this, rootView);
+
+        Snackbar.make(rootView,"Lista de truckers según gustos",Snackbar.LENGTH_LONG).
+                setAction("Gustos", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment gustos=GustosFragment.newInstance();
+                ft.replace(R.id.flaContenido, gustos);
+                ft.commit();
+
+            }
+        }).show();
+        fabList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(rootView,"Lista completa de los FoodTruckers",Snackbar.LENGTH_LONG).show();
+                ParseQuery<ParseObject> query2=ParseQuery.getQuery("Truckers");
+                query2.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+
+                        list.clear();
+                        for (ParseObject object : objects) {
+                            list.add(object);
+                        }
+
+                        adapter.notifyDataSetChanged();
+                        adapter.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                po = (ParseObject) view.getTag();//primer cambio
+
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                Fragment menu = MenuFragment.newInstance(po.getObjectId());
+                                ft.replace(R.id.flaContenido, menu);
+                                ft.commit();
+
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         adapter= new TruckersRecyclerAdapter(list);

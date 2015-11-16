@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class GustosFragment extends Fragment {
 
         JSONArray ing = currentUser.getJSONArray("gustos");
 
-        if(ing!=null) {
+        if(ing!=null && ing.length()!=0) {
             for (int i = 0; i < ing.length(); i++) {
                 try {
                     System.out.println(ing.get(i).toString());
@@ -72,7 +73,8 @@ public class GustosFragment extends Fragment {
 
             gustos.setAdapter(adapter);
         }else{
-            Toast.makeText(getActivity(),"Aun no ha registrado sus gustos",Toast.LENGTH_LONG).show();
+            Snackbar.make(root,"Aun no ha registrado sus gustos",Snackbar.LENGTH_INDEFINITE).show();
+            //Toast.makeText(getActivity(),"Aun no ha registrado sus gustos",Toast.LENGTH_LONG).show();
         }
 
 

@@ -631,8 +631,8 @@ public final class R {
 		public static final int showCustom = 0x7f0d0034;
 		public static final int showHome = 0x7f0d0035;
 		public static final int showTitle = 0x7f0d0036;
-		public static final int snackbar_action = 0x7f0d00eb;
-		public static final int snackbar_text = 0x7f0d00ea;
+		public static final int snackbar_action = 0x7f0d00ea;
+		public static final int snackbar_text = 0x7f0d00e9;
 		public static final int split_action_bar = 0x7f0d002b;
 		public static final int src_atop = 0x7f0d004a;
 		public static final int src_in = 0x7f0d004b;
