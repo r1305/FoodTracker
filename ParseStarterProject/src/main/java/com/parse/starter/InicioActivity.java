@@ -3,13 +3,11 @@ package com.parse.starter;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -49,14 +46,12 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
         setContentView(R.layout.activity_inicio);
         ButterKnife.bind(this);
 
-         toolbar.setNavigationIcon(R.drawable.menu);
+        toolbar.setNavigationIcon(R.drawable.menu);
 
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-
 
         toolbar.animate();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -76,27 +71,26 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
 
             applicantResume.getDataInBackground(new GetDataCallback() {
                 public void done(byte[] data, ParseException e) {
-                    if (e == null) {
+                if (e == null) {
 
+                    img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+                    img.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Fragment frag1 = PerfilFragment.newInstance();
+                            FragmentTransaction ft1 = getFragmentManager().beginTransaction();
+                            ft1.replace(R.id.flaContenido, frag1);
+                            ft1.commit();
+                            dl.closeDrawers();
+                        }
+                    });
 
-                        img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
-                        img.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Fragment frag1 = PerfilFragment.newInstance();
-                                FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                                ft1.replace(R.id.flaContenido, frag1);
-                                ft1.commit();
-                                dl.closeDrawers();
-                            }
-                        });
+                } else {
+                    // something went wrong
 
-                    } else {
-                        // something went wrong
-
-                        Toast t= Toast.makeText(InicioActivity.this,e.toString(),Toast.LENGTH_LONG);
-                        t.show();
-                    }
+                    Toast t= Toast.makeText(InicioActivity.this,e.toString(),Toast.LENGTH_LONG);
+                    t.show();
+                }
                 }
             });
 
@@ -127,7 +121,6 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
         nav.setNavigationItemSelectedListener(this);
 
     }
-
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -172,13 +165,6 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
                 InicioActivity.this.finish();
                 return true;
 
-            case R.id.fab:
-
-                i=new Intent(InicioActivity.this,EditProfileActivity.class);
-                startActivity(i);
-                InicioActivity.this.finish();
-                return true;
-
             case R.id.coupons:
 
                 Fragment cupones =CuponesFragment.newInstance();
@@ -188,8 +174,6 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
                 ft.commit();
                 dl.closeDrawers();
                 return true;
-
-
         }
 
         return false;
