@@ -49,8 +49,8 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         ButterKnife.bind(this);
 
-        final Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
-        new BitmapToByteArray().execute(bitmap);
+//        final Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+//        new BitmapToByteArray().execute(bitmap);
 
         setSupportActionBar(toolbar);
 

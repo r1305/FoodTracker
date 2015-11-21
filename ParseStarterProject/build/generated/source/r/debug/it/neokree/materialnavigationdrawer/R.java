@@ -389,8 +389,8 @@ public final class R {
 		public static final int abc_textfield_search_default_mtrl_alpha = 0x7f020043;
 		public static final int abc_textfield_search_material = 0x7f020044;
 		public static final int black_gradient = 0x7f020046;
-		public static final int ic_arrow_drop_down_white_24dp = 0x7f020081;
-		public static final int ic_arrow_drop_up_white_24dp = 0x7f020082;
+		public static final int ic_arrow_drop_down_white_24dp = 0x7f020082;
+		public static final int ic_arrow_drop_up_white_24dp = 0x7f020083;
 	}
 	public static final class id {
 		public static final int action_bar = 0x7f0d00a4;
@@ -423,7 +423,7 @@ public final class R {
 		public static final int end = 0x7f0d0042;
 		public static final int expand_activities_button = 0x7f0d0088;
 		public static final int expanded_menu = 0x7f0d009b;
-		public static final int frame_container = 0x7f0d00be;
+		public static final int frame_container = 0x7f0d00bd;
 		public static final int gradient = 0x7f0d010c;
 		public static final int home = 0x7f0d0005;
 		public static final int homeAsUp = 0x7f0d0032;
@@ -459,11 +459,11 @@ public final class R {
 		public static final int showHome = 0x7f0d0035;
 		public static final int showTitle = 0x7f0d0036;
 		public static final int split_action_bar = 0x7f0d002b;
-		public static final int statusBar = 0x7f0d00bc;
+		public static final int statusBar = 0x7f0d00bb;
 		public static final int submit_area = 0x7f0d00af;
 		public static final int tabMode = 0x7f0d0030;
 		public static final int title = 0x7f0d008d;
-		public static final int toolbar = 0x7f0d00bd;
+		public static final int toolbar = 0x7f0d00bc;
 		public static final int up = 0x7f0d002c;
 		public static final int useLogo = 0x7f0d0037;
 		public static final int user_cover = 0x7f0d0107;
@@ -539,7 +539,7 @@ public final class R {
 		public static final int abc_shareactionprovider_share_with = 0x7f070010;
 		public static final int abc_shareactionprovider_share_with_application = 0x7f070011;
 		public static final int abc_toolbar_collapse_description = 0x7f070012;
-		public static final int nothing = 0x7f070068;
+		public static final int nothing = 0x7f070069;
 	}
 	public static final class style {
 		public static final int Animation_AppCompat_DropDownUp = 0x7f0a008b;

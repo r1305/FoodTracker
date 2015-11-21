@@ -19,7 +19,7 @@
             android:id="@+id/nombre"
             android:text="Nombre"
             android:textSize="25dp"
-            android:background="#ffd700" />
+            android:background="#9bcc5a" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_menu"
             android:layout_width="match_parent"

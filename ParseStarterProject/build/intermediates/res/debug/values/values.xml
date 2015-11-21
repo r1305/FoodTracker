@@ -522,6 +522,9 @@
     <string name="cast_notification_connected_message">Connected to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_connecting_message">Connecting to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_disconnect">Disconnect</string>
+    <!-- From: file:/C:/Users/Rogger/Documents/FoodTrucker/ParseStarterProject/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="closeDrawer">Navigation View</string>
     <!-- From: file:/C:/Users/Rogger/Documents/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/res/values/values.xml -->
     <eat-comment/>
     <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
@@ -623,6 +626,7 @@
     <string name="nothing"/>
     <!-- From: file:/C:/Users/Rogger/Documents/FoodTrucker/ParseStarterProject/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="openDrawer">Navigation View Closed</string>
     <string name="parse_app_id">xcW2Q2RwK98ZdjUYtoQtROItdstKEV71gNxbfS06</string>
     <string name="parse_client_key">Fa7t41rD84E0fbUw3196HlezPqMyvIsreyPFsj5S</string>
     <!-- From: file:/C:/Users/Rogger/Documents/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
