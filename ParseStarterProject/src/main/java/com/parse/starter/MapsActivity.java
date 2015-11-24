@@ -341,7 +341,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
-                lineOptions.width(6);
+                lineOptions.width(8);
                 lineOptions.color(Color.BLUE);
             }
 
