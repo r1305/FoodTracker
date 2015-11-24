@@ -22,34 +22,19 @@ import com.parse.ParseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PerfilFragment extends Fragment {
     @Bind(R.id.name_perfil)
     TextView txt;
     @Bind(R.id.img_perfil)
-    ImageView img;
+    CircleImageView img;
     @Bind(R.id.correo_perfil)
     TextView email;
     @Bind(R.id.fab)
     FloatingActionButton fab;
     @Bind(R.id.user_perfil)
     TextView user;
-
-    PointF start = new  PointF();
-    public static PointF mid = new PointF();
-
-    // We can be in one of these 3 states
-    public static final int NONE = 0;
-    public static final int DRAG = 1;
-    public static final int ZOOM = 2;
-    public static int mode = NONE;
-
-    float oldDist;
-
-    private float[] matrixValues = new float[9];
-
-
-
 
 
     public static PerfilFragment newInstance(){

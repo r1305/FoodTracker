@@ -18,6 +18,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TruckersRecyclerAdapter extends RecyclerView.Adapter<TruckersRecyclerAdapter.ViewHolder> {
 
@@ -76,7 +77,7 @@ public class TruckersRecyclerAdapter extends RecyclerView.Adapter<TruckersRecycl
     class ViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.image)
-        ImageView image;
+        CircleImageView image;
         @Bind(R.id.title)
         TextView title;
         @Bind(R.id.type)

@@ -49,14 +49,10 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         ButterKnife.bind(this);
 
-//        final Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
-//        new BitmapToByteArray().execute(bitmap);
-
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         toolbar.setTitle("Editando");
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -90,6 +86,8 @@ public class EditProfileActivity extends AppCompatActivity {
                         if (e == null) {
 
                             img.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+                            final Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+                            new BitmapToByteArray().execute(bitmap);
 
                         } else {
                             // something went wrong

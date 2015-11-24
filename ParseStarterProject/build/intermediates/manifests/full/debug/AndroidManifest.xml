@@ -68,6 +68,7 @@
         <activity
             android:name="com.parse.starter.GustosActivity"
             android:label="@string/title_activity_gustos" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

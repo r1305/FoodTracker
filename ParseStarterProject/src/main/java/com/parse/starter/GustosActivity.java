@@ -26,12 +26,11 @@ public class GustosActivity extends AppCompatActivity {
     @Bind(R.id.piqueoM)CheckBox piqueo;
     @Bind(R.id.hamburguesas)CheckBox hamb;
     @Bind(R.id.salchipapas)CheckBox salchi;
-    @Bind(R.id.organico)CheckBox orga;
     @Bind(R.id.carnes)CheckBox carnes;
     @Bind(R.id.pizza)CheckBox pizza;
     @Bind(R.id.alitas)CheckBox alitas;
-    @Bind(R.id.tacos)CheckBox tacos;
-    @Bind(R.id.postres)CheckBox postres;
+    @Bind(R.id.makis)CheckBox makis;
+    @Bind(R.id.sandwiches)CheckBox sandwiches;
 
 
 
@@ -73,10 +72,6 @@ public class GustosActivity extends AppCompatActivity {
 
                         l.add(criollo.getText().toString());
                     }
-                    if(orga.isChecked()){
-
-                        l.add(orga.getText().toString());
-                    }
                     if(carnes.isChecked()){
 
                         l.add(carnes.getText().toString());
@@ -86,13 +81,13 @@ public class GustosActivity extends AppCompatActivity {
 
                         l.add(alitas.getText().toString());
                     }
-                    if(tacos.isChecked()){
+                    if(makis.isChecked()){
 
-                        l.add(tacos.getText().toString());
+                        l.add(makis.getText().toString());
                     }
-                    if(postres.isChecked()){
+                    if(sandwiches.isChecked()){
 
-                        l.add(postres.getText().toString());
+                        l.add(sandwiches.getText().toString());
                     }
                     currentUser.remove("gustos");
                     currentUser.addAllUnique("gustos",l);
