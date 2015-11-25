@@ -1,12 +1,18 @@
 package com.parse.starter;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,6 +32,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -44,6 +52,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import Utilities.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -58,6 +67,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Bind(R.id.direccion)
     EditText direccion;
     ArrayList<LatLng> markerPoints;
+    LatLng origin,destino;
+    private LocationManager locationManager;
 
 
 
@@ -102,6 +113,36 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ContextCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 400, 1000, new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15);
+                mMap.animateCamera(cameraUpdate);
+
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        });
 
 
 
@@ -111,7 +152,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        total = new LatLng(-12.084756,-76.9730044);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Truckers");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -128,25 +168,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         });
-        final GoogleMap.OnMarkerClickListener om= new GoogleMap.OnMarkerClickListener() {
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                LatLng origin = new LatLng(mMap.getMyLocation().getLatitude(),mMap.getMyLocation().getLongitude());
 
-                LatLng destin=marker.getPosition();
+                if (Utils.ruta != null) {
+                    Utils.ruta.remove();
+                    Utils.ruta = null;
+
+                }
+
+                origin = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
+
+                destino = marker.getPosition();
                 markerPoints.add(origin);
-                markerPoints.add(destin);
-                String url= getDirectionsUrl(origin, destin);
-                DownloadTask downloadTask= new DownloadTask();
-
-                downloadTask.execute(url);
+                markerPoints.add(destino);
+                String url = getDirectionsUrl(origin, destino);
+                new DownloadTask().execute(url);
                 return false;
             }
-        };
+        });
 
-        mMap.setOnMarkerClickListener(om);
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(total, 15));
         mMap.setMyLocationEnabled(true);
         mMap.setTrafficEnabled(true);
 
@@ -201,7 +243,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Waypoints
         String waypoints = "";
-        for(int i=2;i<markerPoints.size();i++){
+        markerPoints.clear();
+        for(int i=1;i<markerPoints.size();i++){
+
             LatLng point  = markerPoints.get(i);
             if(i==2)
                 waypoints = "waypoints=";
@@ -269,7 +313,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             // For storing data from web service
             String data = "";
-
             try{
                 // Fetching the data from web service
                 data = downloadUrl(url[0]);
@@ -294,12 +337,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
     private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String,String>>> >{
 
+
+
         // Parsing the data in non-ui thread
         @Override
         protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
 
             JSONObject jObject;
             List<List<HashMap<String, String>>> routes = null;
+
 
             try{
                 jObject = new JSONObject(jsonData[0]);
@@ -318,6 +364,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         protected void onPostExecute(List<List<HashMap<String, String>>> result) {
 
             ArrayList<LatLng> points = null;
+
             PolylineOptions lineOptions = null;
 
             // Traversing through all the routes
@@ -337,16 +384,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     LatLng position = new LatLng(lat, lng);
 
                     points.add(position);
+
                 }
 
                 // Adding all the points in the route to LineOptions
+
                 lineOptions.addAll(points);
                 lineOptions.width(8);
                 lineOptions.color(Color.BLUE);
             }
 
             // Drawing polyline in the Google Map for the i-th route
-            mMap.addPolyline(lineOptions);
+
+            Utils.ruta=mMap.addPolyline(lineOptions);
+
         }
     }
 
