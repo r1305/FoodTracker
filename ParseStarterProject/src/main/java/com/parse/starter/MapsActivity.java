@@ -105,11 +105,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 total = getLocationFromAddress(getBaseContext(), direccion.getText().toString());
-                Toast.makeText(MapsActivity.this, "Latitud: " + total.latitude + ", Longitud: " + total.longitude, Toast.LENGTH_LONG).show();
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(total, 18));
-                mMap.addMarker(new MarkerOptions().position(total));
-                direccion.getText().clear();
-                direccion.clearFocus();
+                if(total!=null){
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(total, 12));
+                    mMap.addMarker(new MarkerOptions().position(total).flat(true));
+                    direccion.getText().clear();
+                }else{
+                    Toast.makeText(MapsActivity.this,"Dirección no encontrada", Toast.LENGTH_LONG).show();
+                }
+
+
 
             }
         });
@@ -118,10 +123,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             return;
         }
+
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 400, 1000, new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
 
+                Toast.makeText(MapsActivity.this, "Ubicando...", Toast.LENGTH_LONG).show();
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15);
                 mMap.animateCamera(cameraUpdate);
@@ -140,6 +147,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onProviderDisabled(String provider) {
+
+                Toast.makeText(MapsActivity.this,"Active su GPS porfavor",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -168,32 +177,66 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         });
+        mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+            @Override
+            public boolean onMyLocationButtonClick() {
+                origin=new LatLng(mMap.getMyLocation().getLatitude(),mMap.getMyLocation().getLongitude());
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(origin, 15);
+                mMap.animateCamera(cameraUpdate);
+                return true;
+            }
+        });
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                origin = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
+            }
+        });
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+
+
 
                 if (Utils.ruta != null) {
                     Utils.ruta.remove();
                     Utils.ruta = null;
 
                 }
+                if (origin != null) {
+                    destino = marker.getPosition();
+                    markerPoints.add(origin);
+                    markerPoints.add(destino);
+                    String url = getDirectionsUrl(origin, destino);
+                    new DownloadTask().execute(url);
+                } else {
+                    origin = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
+                    destino = marker.getPosition();
+                    markerPoints.add(origin);
+                    markerPoints.add(destino);
+                    String url = getDirectionsUrl(origin, destino);
+                    new DownloadTask().execute(url);
+                }
 
-                origin = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
-
-                destino = marker.getPosition();
-                markerPoints.add(origin);
-                markerPoints.add(destino);
-                String url = getDirectionsUrl(origin, destino);
-                new DownloadTask().execute(url);
                 return false;
             }
         });
 
         mMap.setMyLocationEnabled(true);
-        mMap.setTrafficEnabled(true);
-
         UiSettings u=mMap.getUiSettings();
         u.setZoomControlsEnabled(true);
+        u.setMapToolbarEnabled(false);
+        u.setRotateGesturesEnabled(true);
 
     }
 
@@ -202,9 +245,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onBackPressed(){
         MapsActivity.this.finish();
+        Intent i=new Intent(this,InicioActivity.class);
+        startActivity(i);
     }
 
     public LatLng getLocationFromAddress(Context context,String strAddress) {
+
 
         Geocoder coder = new Geocoder(context);
 
@@ -221,6 +267,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             location.getLongitude();
 
             p1 = new LatLng(location.getLatitude(), location.getLongitude() );
+            origin=p1;
 
         } catch (Exception ex) {
 
@@ -392,6 +439,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 lineOptions.addAll(points);
                 lineOptions.width(8);
                 lineOptions.color(Color.BLUE);
+
+
             }
 
             // Drawing polyline in the Google Map for the i-th route
