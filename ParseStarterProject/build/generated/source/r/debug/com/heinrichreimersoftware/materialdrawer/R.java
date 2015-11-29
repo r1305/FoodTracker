@@ -672,14 +672,14 @@ public final class R {
 		public static final int abc_shareactionprovider_share_with = 0x7f070010;
 		public static final int abc_shareactionprovider_share_with_application = 0x7f070011;
 		public static final int abc_toolbar_collapse_description = 0x7f070012;
-		public static final int md_content_description_drawer_close = 0x7f07005d;
-		public static final int md_content_description_drawer_open = 0x7f07005e;
-		public static final int md_content_description_open_profile_list = 0x7f07005f;
-		public static final int md_content_description_profile_avatar = 0x7f070060;
-		public static final int md_content_description_profile_avatar_secondary = 0x7f070061;
-		public static final int md_content_description_profile_background = 0x7f070062;
-		public static final int md_content_description_profile_background_overlay = 0x7f070063;
-		public static final int md_label_plus = 0x7f070064;
+		public static final int md_content_description_drawer_close = 0x7f07005c;
+		public static final int md_content_description_drawer_open = 0x7f07005d;
+		public static final int md_content_description_open_profile_list = 0x7f07005e;
+		public static final int md_content_description_profile_avatar = 0x7f07005f;
+		public static final int md_content_description_profile_avatar_secondary = 0x7f070060;
+		public static final int md_content_description_profile_background = 0x7f070061;
+		public static final int md_content_description_profile_background_overlay = 0x7f070062;
+		public static final int md_label_plus = 0x7f070063;
 		public static final int status_bar_notification_info_overflow = 0x7f070048;
 	}
 	public static final class style {

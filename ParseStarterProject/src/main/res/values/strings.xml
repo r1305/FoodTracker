@@ -4,7 +4,7 @@
     <string name="parse_client_key">Fa7t41rD84E0fbUw3196HlezPqMyvIsreyPFsj5S</string>
     <string name="facebook_app_id">1469109516727568</string>
 
-    <string name="app_name">Food Trucker</string>
+    <string name="app_name">Food Tracker</string>
 
     <string name="hello_world">Hello World!</string>
     <string name="action_settings">Settings</string>
@@ -17,9 +17,6 @@
     <string name="title_activity_gustos">Gustos</string>
     <string name="title_activity_maps">Mapa</string>
     <string name="title_activity_edit_profile">Editando</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="closeDrawer">Navigation View</string>
     <string name="openDrawer">Navigation View Closed</string>

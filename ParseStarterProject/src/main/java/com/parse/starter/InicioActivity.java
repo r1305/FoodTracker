@@ -179,5 +179,8 @@ public class InicioActivity extends AppCompatActivity implements NavigationView.
         return false;
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
