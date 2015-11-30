@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
       registrar.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
+              MainActivity.this.finish();
               Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
               startActivity(intent);
 
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
               ParseUser.logInInBackground(username, pass, new LogInCallback() {
                   public void done(ParseUser user, ParseException e) {
                       if (user != null) {
+                          MainActivity.this.finish();
                           Intent intent = new Intent(MainActivity.this, InicioActivity.class);
                           startActivity(intent);
 
