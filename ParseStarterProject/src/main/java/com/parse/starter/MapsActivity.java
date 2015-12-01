@@ -12,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,7 @@ import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.json.JSONObject;
 
@@ -69,6 +71,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ArrayList<LatLng> markerPoints;
     LatLng origin,destino;
     private LocationManager locationManager;
+    ParseUser u=ParseUser.getCurrentUser();
 
 
 
@@ -93,9 +96,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MapsActivity.this, InicioActivity.class);
-                startActivity(i);
-                MapsActivity.this.finish();
+                if(u.getString("tipo").equals("admin")){
+                    Intent i = new Intent(MapsActivity.this, AdminActivity.class);
+                    startActivity(i);
+                    MapsActivity.this.finish();
+                }else {
+                    Intent i = new Intent(MapsActivity.this, InicioActivity.class);
+                    startActivity(i);
+                    MapsActivity.this.finish();
+                }
 
             }
         });
@@ -162,71 +171,82 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Truckers");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null) {
-                    for (ParseObject object : objects) {
-                        ParseGeoPoint geo = (ParseGeoPoint) object.get("location");
-                        mMap.addMarker(new MarkerOptions().position(new LatLng(geo.getLatitude(), geo.getLongitude()))
-                                .title(object.get("name").toString())
-                                .snippet(object.get("tipo").toString())
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
-                    }
+        if(u.getString("tipo").equals("admin")){
+            query.whereEqualTo("idAdmin",u.getObjectId());
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+                    if (e == null) {
+                        for (ParseObject object : objects) {
+                            ParseGeoPoint geo = (ParseGeoPoint) object.get("location");
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(geo.getLatitude(), geo.getLongitude()))
+                                    .title(object.get("name").toString())
+                                    .snippet(object.get("tipo").toString())
+                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
+                        }
 
+                    }
                 }
-            }
-        });
+            });
+        }else {
+
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+                    if (e == null) {
+                        for (ParseObject object : objects) {
+                            ParseGeoPoint geo = (ParseGeoPoint) object.get("location");
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(geo.getLatitude(), geo.getLongitude()))
+                                    .title(object.get("name").toString())
+                                    .snippet(object.get("tipo").toString())
+                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_map)));
+                        }
+
+                    }
+                }
+            });
+
+        }
+
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-                origin=new LatLng(mMap.getMyLocation().getLatitude(),mMap.getMyLocation().getLongitude());
+                origin = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(origin, 15);
                 mMap.animateCamera(cameraUpdate);
                 return true;
             }
         });
-        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
-            @Override
-            public void onMarkerDragStart(Marker marker) {
 
-            }
-
-            @Override
-            public void onMarkerDrag(Marker marker) {
-
-            }
-
-            @Override
-            public void onMarkerDragEnd(Marker marker) {
-                origin = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
-            }
-        });
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                if (u.getString("tipo").equals("admin")) {
 
+                    Toast.makeText(MapsActivity.this,"Perfil del trucker",Toast.LENGTH_SHORT).show();
 
-
-                if (Utils.ruta != null) {
-                    Utils.ruta.remove();
-                    Utils.ruta = null;
-
-                }
-                if (origin != null) {
-                    destino = marker.getPosition();
-                    markerPoints.add(origin);
-                    markerPoints.add(destino);
-                    String url = getDirectionsUrl(origin, destino);
-                    new DownloadTask().execute(url);
                 } else {
-                    origin = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
-                    destino = marker.getPosition();
-                    markerPoints.add(origin);
-                    markerPoints.add(destino);
-                    String url = getDirectionsUrl(origin, destino);
-                    new DownloadTask().execute(url);
+                    if (Utils.ruta != null) {
+                        Utils.ruta.remove();
+                        Utils.ruta = null;
+
+                    }
+                    if (origin != null) {
+                        destino = marker.getPosition();
+                        markerPoints.add(origin);
+                        markerPoints.add(destino);
+                        String url = getDirectionsUrl(origin, destino);
+                        new DownloadTask().execute(url);
+                    } else {
+                        origin = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
+                        destino = marker.getPosition();
+                        markerPoints.add(origin);
+                        markerPoints.add(destino);
+                        String url = getDirectionsUrl(origin, destino);
+                        new DownloadTask().execute(url);
+                    }
                 }
+
 
                 return false;
             }
@@ -236,7 +256,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         UiSettings u=mMap.getUiSettings();
         u.setZoomControlsEnabled(true);
         u.setMapToolbarEnabled(false);
-        u.setRotateGesturesEnabled(true);
 
     }
 

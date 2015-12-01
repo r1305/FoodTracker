@@ -63,9 +63,17 @@ public class MainActivity extends AppCompatActivity {
               ParseUser.logInInBackground(username, pass, new LogInCallback() {
                   public void done(ParseUser user, ParseException e) {
                       if (user != null) {
-                          MainActivity.this.finish();
-                          Intent intent = new Intent(MainActivity.this, InicioActivity.class);
-                          startActivity(intent);
+
+                          if(user.getString("tipo").equals("admin")){
+                              MainActivity.this.finish();
+                              Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                              startActivity(intent);
+                          }else{
+                              MainActivity.this.finish();
+                              Intent intent = new Intent(MainActivity.this, InicioActivity.class);
+                              startActivity(intent);
+                          }
+
 
                       } else {
                           // Signup failed. Look at the ParseException to see what happened.

@@ -91,6 +91,10 @@
             android:name="com.parse.starter.EditProfileActivity"
             android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.parse.starter.AdminActivity"
+            android:label="@string/title_activity_admin"
+            android:theme="@style/AppTheme" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

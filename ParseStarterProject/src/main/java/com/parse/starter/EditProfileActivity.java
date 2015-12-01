@@ -126,8 +126,13 @@ public class EditProfileActivity extends AppCompatActivity {
                             @Override
                             public void done(ParseException e) {
 
-                                Intent i = new Intent(EditProfileActivity.this, InicioActivity.class);
-                                startActivity(i);
+                                if(currentUser.getString("tipo").equals("admin")){
+                                    Intent i = new Intent(EditProfileActivity.this, AdminActivity.class);
+                                    startActivity(i);
+                                }else{
+                                    Intent i = new Intent(EditProfileActivity.this, InicioActivity.class);
+                                    startActivity(i);
+                                }
 
                                 Toast t = Toast.makeText(EditProfileActivity.this, "Edicion exitosa", Toast.LENGTH_SHORT);
                                 t.show();

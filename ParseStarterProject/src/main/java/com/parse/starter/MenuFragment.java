@@ -26,6 +26,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -76,13 +77,21 @@ public class MenuFragment extends Fragment{
             }
         });
 
+        final ParseUser u=ParseUser.getCurrentUser();
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment list = ListTruckersFragment.newInstance();
-                ft.replace(R.id.flaContenido, list);
-                ft.commit();
+                if(u.getString("tipo").equals("admin")){
+                    Fragment list = TruckerAdmin.newInstance();
+                    ft.replace(R.id.flaContenido, list);
+                    ft.commit();
+                }else{
+                    Fragment list = ListTruckersFragment.newInstance();
+                    ft.replace(R.id.flaContenido, list);
+                    ft.commit();
+                }
             }
         });
 
