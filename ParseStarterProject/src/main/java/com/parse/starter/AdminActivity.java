@@ -142,7 +142,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
 
             case R.id.trucker:
 
-                Fragment listado =ListTruckersFragment.newInstance();
+                Fragment listado =TruckerAdmin.newInstance();
 
                 ft.replace(R.id.flaContenido, listado);
                 toolbar.setTitle("Truckers");

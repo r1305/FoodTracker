@@ -42,18 +42,18 @@ public class CuponesRecyclerAdapter  extends RecyclerView.Adapter<CuponesRecycle
         holder.desc.setText(po.getString("Descuento"));
         ParseFile applicantResume = (ParseFile)po.get("foto");
 
-            applicantResume.getDataInBackground(new GetDataCallback() {
-                public void done(byte[] data, ParseException e) {
-                    if (e == null) {
+        applicantResume.getDataInBackground(new GetDataCallback() {
+            public void done(byte[] data, ParseException e) {
+                if (e == null) {
 
-                        holder.image.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+                    holder.image.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
 
-                    } else {
-                        // something went wrong
+                } else {
+                    // something went wrong
 
-                    }
                 }
-            });
+            }
+        });
 
     }
 

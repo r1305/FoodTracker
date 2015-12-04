@@ -2,6 +2,7 @@ package com.parse.starter;
 
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -94,7 +95,6 @@ public class MenuFragment extends Fragment{
                 }
             }
         });
-
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);

@@ -73,22 +73,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LocationManager locationManager;
     ParseUser u=ParseUser.getCurrentUser();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         markerPoints=new ArrayList<>();
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         ButterKnife.bind(this);
-
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -105,11 +99,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     startActivity(i);
                     MapsActivity.this.finish();
                 }
-
             }
         });
-
-
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,14 +113,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }else{
                     Toast.makeText(MapsActivity.this,"Dirección no encontrada", Toast.LENGTH_LONG).show();
                 }
-
-
-
             }
         });
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ContextCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
             return;
         }
 

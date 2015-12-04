@@ -2,6 +2,7 @@ package com.parse.starter;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,10 +30,8 @@ import butterknife.ButterKnife;
 
 public class TruckerAdmin extends Fragment {
 
-    @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
-    @Bind(R.id.fab_list)
-    FloatingActionButton fabList;
+    FloatingActionButton fabAdd;
 
     ParseQuery<ParseObject> query= ParseQuery.getQuery("Truckers");
     ParseUser u=ParseUser.getCurrentUser();
@@ -59,7 +58,15 @@ public class TruckerAdmin extends Fragment {
                              Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_admin_truckers, container, false);
-        ButterKnife.bind(this, rootView);
+        recyclerView=(RecyclerView)rootView.findViewById(R.id.recycler_view_admin);
+        fabAdd=(FloatingActionButton)rootView.findViewById(R.id.fab_add);
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity(),TruckRegister.class);
+                startActivity(i);
+            }
+        });
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

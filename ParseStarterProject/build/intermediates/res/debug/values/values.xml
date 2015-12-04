@@ -643,7 +643,9 @@
     <string name="title_activity_gustos">Gustos</string>
     <string name="title_activity_inicio">Inicio</string>
     <string name="title_activity_maps">Mapa</string>
+    <string name="title_activity_menu_register">MenuRegister</string>
     <string name="title_activity_register">Registro</string>
+    <string name="title_activity_truck_register">TruckRegister</string>
     <!-- From: file:/C:/Users/Rogger/Documents/FoodTrucker/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/res/values/wallet_strings.xml -->
     <eat-comment/>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>
