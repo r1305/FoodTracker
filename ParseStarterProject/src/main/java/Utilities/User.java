@@ -10,8 +10,17 @@ public class User {
     String urlFoto;
     String sexo;
     String email;
+    String tipo;
 
     public User() {
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getEmail() {

@@ -132,6 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Utils.parseUser.setEmail(email.getText().toString());
                 Utils.parseUser.setPassword(pass);
                 Utils.parseUser.put("name", name.getText().toString());
+                Utils.parseUser.put("tipo","cliente");
 
 
                 switch (sex.getCheckedRadioButtonId()) {
