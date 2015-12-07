@@ -73,16 +73,12 @@ public class MainActivity extends AppCompatActivity {
                               Intent intent = new Intent(MainActivity.this, InicioActivity.class);
                               startActivity(intent);
                           }
-
-
                       } else {
                           // Signup failed. Look at the ParseException to see what happened.
                           Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                       }
-
                   }
               });
-
           }
 
       });
